@@ -7,7 +7,7 @@ local radius = 160
 local souls = EntityGetInRadiusWithTag( x, y, radius, "soul" )
 local count = #souls
 
-GamePrint(count)
+--GamePrint(count)
 
 --increase damage
 local comp = EntityGetFirstComponent( entity_id, "ProjectileComponent" )
