@@ -33,9 +33,9 @@ edit_component( effect_id, "ParticleEmitterComponent", function(comp3,vars)
 end)
 
 --kills souls
---[[for i,soul_id in ipairs(souls) do
+for i,soul_id in ipairs(souls) do
 	EntityKill(soul_id)
-end]]--
+end
 
 --[[if ( who_shot ~= nil ) and ( comp ~= nil ) then
 	for i,projectile_id in ipairs(projectiles) do
