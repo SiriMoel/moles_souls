@@ -12,6 +12,8 @@ function OnModPostInit()
 end
 
 function OnPlayerSpawned( player_entity )
+    --[[local child_id = EntityLoad( "mods/moles_souls/files/entities/souls/soul_gilded.xml", px, py )
+    EntityAddChild( player_entity, child_id )]]--
 end
 
 function OnWorldPostUpdate()

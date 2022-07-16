@@ -1,6 +1,6 @@
 <Sprite 
   default_animation="float_right" 
-  filename="mods/moles_souls/files/entities/souls/sprites/soul_spiders.png" 
+  filename="mods/moles_souls/files/entities/souls/sprites/soul_fly.png" 
   offset_x="4.5" 
   offset_y="5" >
 

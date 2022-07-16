@@ -15,8 +15,16 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
     GamePrint(herd_id)
 
     if ( "mods/moles_souls/files/entities/souls/soul_" .. herd_id .. ".xml" ) ~= nil then
+        
+        local is_gilded = math.random(1, 300)
 
-        local child_id = EntityLoad( "mods/moles_souls/files/entities/souls/soul_" .. herd_id .. ".xml", px, py )
+        local child_id
+
+        if is_gilded == 1 then 
+            child_id = EntityLoad( "mods/moles_souls/files/entities/souls/soul_gilded.xml", px, py )
+        else
+            child_id = EntityLoad( "mods/moles_souls/files/entities/souls/soul_" .. herd_id .. ".xml", px, py )
+        end
     
         EntityAddTag( child_id, "soul_entity" )
         EntityAddChild( player, child_id ) 

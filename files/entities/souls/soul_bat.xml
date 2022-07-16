@@ -1,4 +1,4 @@
-<Entity tags="soul,soul_spiders">
+<Entity tags="soul,soul_bat">
 	<HitboxComponent 
         _tags="enabled_in_world"
         aabb_min_x="-4" 
@@ -18,7 +18,7 @@
 
 	<!-- ghost functionality and visuals -->		
 	<SpriteComponent 
-		image_file="mods/moles_souls/files/entities/souls/sprites/soul_spiders.xml" 
+		image_file="mods/moles_souls/files/entities/souls/sprites/soul_bat.xml" 
 		>
 	</SpriteComponent>
 	<LuaComponent 
