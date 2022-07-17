@@ -4,17 +4,8 @@ local entity_id = GetUpdatedEntityID()
 local root_id = EntityGetRootEntity( entity_id )
 local x, y = EntityGetTransform( entity_id )
 local radius = 160
-
-local total_souls = EntityGetInRadiusWithTag( x, y, radius, "soul" )
-
-local souls = EntityGetInRadiusWithTag( x, y, radius, "soul" )[math.ceil(total_souls * 0.2)]
+local souls = EntityGetInRadiusWithTag( x, y, radius, "soul" )
 local count = #souls
-
-if 0 < count < 1 then
-	count = 1
-end
-
-GamePrint(count)
 
 --GamePrint(count)
 
@@ -22,10 +13,12 @@ GamePrint(count)
 local comp = EntityGetFirstComponent( entity_id, "ProjectileComponent" )
 
 local damage = ComponentGetValue2( comp, "damage" )
---local expdamage = ComponentObjectGetValue( comp, "config_explosion", "damage" )
---local exprad = ComponentObjectGetValue( comp, "config_explosion", "explosion_radius" )
+local expdamage = ComponentObjectGetValue( comp, "config_explosion", "damage" )
+local exprad = ComponentObjectGetValue( comp, "config_explosion", "explosion_radius" )
 
-damage = damage + count * 2.8
+damage = damage + count * 3.2
+expdamage = expdamage + count * 1.2
+exprad = exprad + count * 0.4
 
 ComponentSetValue2( comp, "damage", damage )
 

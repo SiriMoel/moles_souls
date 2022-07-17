@@ -20,7 +20,7 @@ local to_insert = {
     {
 		id          = "SOULS_TO_POWER",
 		name 		= "Souls to Power",
-		description = "Consume all of your souls to increase a projectile's damage.",
+		description = "Consumes a portion of your souls to increase a projectile's damage.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/souls_to_power.png",
 		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
 		related_extra_entities = { "mods/moles_souls/files/entities/misc/souls_to_power.xml" },
@@ -28,11 +28,30 @@ local to_insert = {
 		spawn_level                       = "1,2,3,10",
 		spawn_probability                 = "0.2,0.5,0.5,0.1", 
 		price = 120,
-		mana = 70,
+		mana = 50,
 		-- max_uses = 20,
 		action 		= function()
 			c.extra_entities = c.extra_entities .. "mods/moles_souls/files/entities/misc/souls_to_power.xml,"
 			c.fire_rate_wait    = c.fire_rate_wait + 20
+			draw_actions( 1, true )
+		end,
+	},
+	{
+		id          = "SOUL_BATTERY",
+		name 		= "Soul Battery",
+		description = "Consumes all your souls to increase a projectile's damage.",
+		sprite 		= "mods/moles_souls/files/ui_gfx/soul_battery.png",
+		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
+		related_extra_entities = { "mods/moles_souls/files/entities/misc/soul_battery.xml" },
+		type 		= ACTION_TYPE_MODIFIER,
+		spawn_level                       = "2,3,6,10",
+		spawn_probability                 = "0.3,0.3,0.6,0.6", 
+		price = 200,
+		mana = 70,
+		-- max_uses = 20,
+		action 		= function()
+			c.extra_entities = c.extra_entities .. "mods/moles_souls/files/entities/misc/soul_battery.xml,"
+			c.fire_rate_wait    = c.fire_rate_wait + 40
 			draw_actions( 1, true )
 		end,
 	},
