@@ -7,7 +7,11 @@ local radius = 160
 local souls = EntityGetInRadiusWithTag( x, y, radius, "soul" )
 local count = #souls
 
---GamePrint(count)
+if count == 1 then
+	GamePrint(count .. " soul consumed!")
+else
+	GamePrint(count .. " souls consumed!")
+end
 
 --increase damage
 local comp = EntityGetFirstComponent( entity_id, "ProjectileComponent" )

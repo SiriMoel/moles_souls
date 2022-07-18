@@ -7,14 +7,19 @@ local radius = 160
 
 local total_souls = EntityGetInRadiusWithTag( x, y, radius, "soul" )
 
-local souls = EntityGetInRadiusWithTag( x, y, radius, "soul" )[math.ceil(total_souls * 0.2)]
-local count = #souls
-
-if 0 < count < 1 then
-	count = 1
+local souls = {}
+for i,v in ipairs(total_souls) do 
+  if i < math.ceil(#total_souls * 0.3) then table.insert(souls, v)
+  else break end
 end
 
-GamePrint(count)
+local count = #souls
+
+if count == 1 then
+	GamePrint(count .. " soul consumed!")
+else
+	GamePrint(count .. " souls consumed!")
+end
 
 --GamePrint(count)
 
