@@ -1,11 +1,12 @@
-dofile_once("data/scripts/lib/utilities.lua")
+dofile("mods/moles_souls/files/utils.lua")
 
 local entity_id = GetUpdatedEntityID()
 local root_id = EntityGetRootEntity( entity_id )
 local x, y = EntityGetTransform( entity_id )
-local radius = 50
 
-local targets = EntityGetInRadiusWithTag( x, y, radius, "homing_target" )
+local mark_radius = 30
+
+local targets = EntityGetInRadiusWithTag( x, y, mark_radius, "homing_target" )
 
 local effect_id = EntityLoad("mods/moles_souls/files/entities/particles/reaping_particles.xml", x, y)
 EntityAddChild( root_id, effect_id )

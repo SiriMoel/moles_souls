@@ -1,11 +1,12 @@
-dofile_once("data/scripts/lib/utilities.lua")
+dofile("mods/moles_souls/files/utils.lua")
 
 local entity_id = GetUpdatedEntityID()
 local root_id = EntityGetRootEntity( entity_id )
 local x, y = EntityGetTransform( entity_id )
-local radius = 56
 
-local targets = EntityGetInRadiusWithTag( x, y, radius, "homing_target" )
+local mark_radius = 56
+
+local targets = EntityGetInRadiusWithTag( x, y, mark_radius, "homing_target" )
 
 if ( #targets > 0 ) then
     for i,target_id in ipairs( targets ) do

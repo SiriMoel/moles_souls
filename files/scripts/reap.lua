@@ -1,4 +1,4 @@
-dofile_once("data/scripts/lib/utilities.lua")
+dofile("mods/moles_souls/files/utils.lua")
 
 function death( damage_type_bit_field, damage_message, entity_thats_responsible, drop_items )
 
@@ -16,7 +16,7 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
 
     if ( "mods/moles_souls/files/entities/souls/soul_" .. herd_id .. ".xml" ) ~= nil then
         
-        local is_gilded = math.random(1, 300)
+        local is_gilded = math.random(1, 100)
 
         local child_id
 
