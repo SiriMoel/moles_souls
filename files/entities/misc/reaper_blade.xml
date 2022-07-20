@@ -1,0 +1,44 @@
+<Entity name="$projectile_default" tags="projectile_player" >
+	<Base file="data/entities/base_custom_card.xml" > 
+		<SpriteComponent 
+			image_file="mods/moles_souls/files/ui_gfx/actions/reaper_blade.png" >
+		</SpriteComponent>
+		
+		<ItemActionComponent 
+			_tags="enabled_in_world"
+			action_id="REAPER_BLADE" >
+		</ItemActionComponent>
+	</Base>
+	
+    <InheritTransformComponent
+		_tags="enabled_in_hand"
+		parent_hotspot_tag="shoot_pos" 
+		always_use_immediate_parent_rotation="1" >
+		<Transform 
+        position.x="6" 
+        position.y="0">
+		</Transform>
+	</InheritTransformComponent>
+
+    <LuaComponent
+		script_source_file="mods/moles_souls/files/scripts/projectiles/soul_battery.lua"
+		execute_every_n_frame="1"
+		>
+	</LuaComponent>
+
+
+    <AreaDamageComponent
+		_tags="enabled_in_hand"
+		aabb_min.x="-30" 
+		aabb_min.y="-6" 
+		aabb_max.x="30" 
+		aabb_max.y="6" 
+		damage_per_frame="0.9"
+		update_every_n_frame="1"
+		entities_with_tag="enemy"
+        root_entity_is_responsible_for_damage="1"
+		damage_type="DAMAGE_SLICE"
+		>
+	</AreaDamageComponent>
+
+</Entity>

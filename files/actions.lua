@@ -1,6 +1,6 @@
 local to_insert = {
     {
-		id          = "REAPING_SHOT",
+		id          = "MOLES_SOULS_REAPING_SHOT",
 		name 		= "Reaping Shot",
 		description = "Marks enemies to drop their souls on death.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/reaping_shot.png",
@@ -18,7 +18,7 @@ local to_insert = {
 		end,
 	},
     {
-		id          = "SOULS_TO_POWER",
+		id          = "MOLES_SOULS_SOULS_TO_POWER",
 		name 		= "Souls to Power",
 		description = "Consumes a portion of your souls to increase a projectile's damage.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/souls_to_power.png",
@@ -37,7 +37,7 @@ local to_insert = {
 		end,
 	},
 	{
-		id          = "SOUL_BATTERY",
+		id          = "MOLES_SOULS_SOUL_BATTERY",
 		name 		= "Soul Battery",
 		description = "Consumes all your souls to increase a projectile's damage.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_battery.png",
@@ -56,7 +56,7 @@ local to_insert = {
 		end,
 	},
 	{
-		id          = "REAPING_FIELD",
+		id          = "MOLES_SOULS_REAPING_FIELD",
 		name 		= "Circle of Reaping",
 		description = "Marks enemies in a large field to drop their souls on death.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/reaping_field.png",
@@ -73,7 +73,7 @@ local to_insert = {
 		end,
 	},
 	{
-		id          = "SOUL_FUELED_HEALING_BOLT",
+		id          = "MOLES_SOULS_SOUL_FUELED_HEALING_BOLT",
 		name 		= "Soul Fueled Healing Bolt",
 		description = "Consumes a portion of your souls to create a healing projectie.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_fueled_healing_bolt.png",
@@ -90,7 +90,7 @@ local to_insert = {
 		end,
 	},
 	{
-		id          = "WHISPER_SOUL_COUNT",
+		id          = "MOLES_SOULS_WHISPER_SOUL_COUNT",
 		name 		= "Whisper Souls",
 		description = "Makes your wand whisper how many souls you have.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/whisper_soul_count.png",
@@ -105,6 +105,37 @@ local to_insert = {
 			c.extra_entities = c.extra_entities .. "mods/moles_souls/files/entities/misc/whisper_soul_count.xml,"
 			c.fire_rate_wait    = c.fire_rate_wait + 0
 			draw_actions( 1, true )
+		end,
+	},
+	{
+		id					= "MOLES_SOULS_REAPER_BLADE",
+		name				= "Reaper Blade",
+		description			= "Enables your wand to cut the souls from your enemies.",
+		sprite      	   = "mods/moles_souls/files/ui_gfx/actions/reaper_blade.png",
+		type        		= ACTION_TYPE_PASSIVE,
+		spawn_level      	= "1,2,3,4,5",
+		spawn_probability	= "1,2,3,4,5",
+		price				= 80,
+		mana				= 0,
+		custom_xml_file = "mods/moles_souls/files/entities/misc/reaper_blade.xml",
+		action = function()
+		end,
+	},
+	{
+		id          = "MOLES_SOULS_SOUL_BLAST",
+		name 		= "Soul Blast",
+		description = "Converts a single soul into a powerful projectile.",
+		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_blast.png",
+		related_projectiles	= {"mods/moles_souls/files/entities/projectiles/soul_blast.xml"},
+		type 		= ACTION_TYPE_PROJECTILE,
+		spawn_level                       = "2,3,4,5", 
+		spawn_probability                 = "1,1,1,1", 
+		price = 170,
+		mana = 60,
+		max_uses = 10,
+		action 		= function()
+			add_projectile("mods/moles_souls/files/entities/projectiles/soul_blast.xml")
+			c.fire_rate_wait = c.fire_rate_wait + 10
 		end,
 	},
 }

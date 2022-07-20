@@ -25,6 +25,8 @@ expdamage = expdamage + count * 1.2
 exprad = exprad + count * 0.4
 
 ComponentSetValue2( comp, "damage", damage )
+ComponentObjectSetValue( comp, "config_explosion", "damage", expdamage )
+ComponentObjectSetValue( comp, "config_explosion", "explosion_radius", exprad )
 
 --effects
 local effect_id = EntityLoad("mods/moles_souls/files/entities/particles/souls_to_power.xml", x, y)
