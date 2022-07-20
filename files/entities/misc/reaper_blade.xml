@@ -6,7 +6,7 @@
 		
 		<ItemActionComponent 
 			_tags="enabled_in_world"
-			action_id="REAPER_BLADE" >
+			action_id="MOLES_SOULS_REAPER_BLADE" >
 		</ItemActionComponent>
 	</Base>
 	

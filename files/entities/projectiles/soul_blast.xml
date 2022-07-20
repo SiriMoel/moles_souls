@@ -38,6 +38,8 @@
 	>
   <damage_by_type
       curse="0"
+      ice="0"
+      fire="0" 
       >
   </damage_by_type>
     <config_explosion

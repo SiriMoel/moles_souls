@@ -4,7 +4,6 @@ local to_insert = {
 		name 		= "Reaping Shot",
 		description = "Marks enemies to drop their souls on death.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/reaping_shot.png",
-		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
 		related_extra_entities = { "mods/moles_souls/files/entities/misc/reaping_shot.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4,5",
@@ -22,7 +21,6 @@ local to_insert = {
 		name 		= "Souls to Power",
 		description = "Consumes a portion of your souls to increase a projectile's damage.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/souls_to_power.png",
-		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
 		related_extra_entities = { "mods/moles_souls/files/entities/misc/souls_to_power.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,10",
@@ -41,7 +39,6 @@ local to_insert = {
 		name 		= "Soul Battery",
 		description = "Consumes all your souls to increase a projectile's damage.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_battery.png",
-		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
 		related_extra_entities = { "mods/moles_souls/files/entities/misc/soul_battery.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,6,10",
@@ -94,7 +91,6 @@ local to_insert = {
 		name 		= "Whisper Souls",
 		description = "Makes your wand whisper how many souls you have.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/whisper_soul_count.png",
-		sprite_unidentified = "data/ui_gfx/gun_actions/homing_unidentified.png",
 		related_extra_entities = { "mods/moles_souls/files/entities/misc/whisper_soul_count.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4,5",
@@ -136,6 +132,21 @@ local to_insert = {
 		action 		= function()
 			add_projectile("mods/moles_souls/files/entities/projectiles/soul_blast.xml")
 			c.fire_rate_wait = c.fire_rate_wait + 10
+		end,
+	},
+	{
+		id          = "MOLES_SOULS_GOLD_TO_SOULS",
+		name 		= "Gold to Souls",
+		description = "Converts an amount of gold into a soul.",
+		sprite 		= "mods/moles_souls/files/ui_gfx/actions/gold_to_souls.png",
+		type 		= ACTION_TYPE_UTILITY,
+		spawn_level                       = "1,2,3,4,5",
+		spawn_probability                 = "1,1,1,1,1",
+		price = 200,
+		mana = 30,
+		custom_xml_file = "mods/moles_souls/files/entities/misc/gold_to_souls.xml",
+		action 		= function()
+			draw_actions( 1, true )
 		end,
 	},
 }
