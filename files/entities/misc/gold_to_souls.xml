@@ -15,8 +15,6 @@
 		parent_hotspot_tag="shoot_pos" >
 	</InheritTransformComponent>
 
-	
-
     <LuaComponent
 		script_source_file="mods/moles_souls/files/scripts/projectiles/gold_to_souls.lua"
 		execute_every_n_frame="1"

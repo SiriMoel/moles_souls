@@ -139,6 +139,7 @@ local to_insert = {
 		name 		= "Gold to Souls",
 		description = "Converts an amount of gold into a soul.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/gold_to_souls.png",
+		related_projectiles	= {"mods/moles_souls/files/entities/misc/gold_to_souls.xml"},
 		type 		= ACTION_TYPE_UTILITY,
 		spawn_level                       = "1,2,3,4,5",
 		spawn_probability                 = "1,1,1,1,1",
@@ -146,7 +147,7 @@ local to_insert = {
 		mana = 30,
 		custom_xml_file = "mods/moles_souls/files/entities/misc/gold_to_souls.xml",
 		action 		= function()
-			add_projectile("mods/moles_souls/files/entities/misc/gold_to_souls.xml")
+			--add_projectile("mods/moles_souls/files/entities/misc/gold_to_souls.xml")
 			draw_actions( 1, true )
 		end,
 	},
