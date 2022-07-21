@@ -36,7 +36,6 @@
 		damage_per_frame="0.9"
 		update_every_n_frame="1"
 		entities_with_tag="enemy"
-        root_entity_is_responsible_for_damage="1"
 		damage_type="DAMAGE_SLICE"
 		>
 	</AreaDamageComponent>
