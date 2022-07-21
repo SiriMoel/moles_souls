@@ -9,7 +9,7 @@
 	</VelocityComponent>
 
 	<HomingComponent
-		target_tag="mortal"
+		target_tag="homing_target"
 		homing_targeting_coeff="6"
 		detect_distance="160"
 		homing_velocity_multiplier="1"
@@ -22,9 +22,9 @@
 		aabb_min.y="-10" 
 		aabb_max.x="10" 
 		aabb_max.y="10" 
-		damage_per_frame="0.0001"
-		update_every_n_frame="1"
-		entities_with_tag="mortal"
+		damage_per_frame="0.05"
+		update_every_n_frame="10"
+		entities_with_tag="destruction_target"
 		damage_type="DAMAGE_PROJECTILE"
 		circle_radius="8"
 		>
