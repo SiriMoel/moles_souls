@@ -152,7 +152,7 @@ local to_insert = {
 	{
 		id          = "MOLES_SOULS_SOUL_HALO",
 		name 		= "Reaping Halo",
-		description = "Fires a halo of soul energy and causes enemies to drop their souls.",
+		description = "Fires a halo of soul energy that causes enemies to drop their souls.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_halo.png",
 		related_projectiles	= {"mods/moles_souls/files/entities/projectiles/reaping_halo.xml"},
 		type 		= ACTION_TYPE_PROJECTILE,
