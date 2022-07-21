@@ -4,7 +4,7 @@ local entity_id = GetUpdatedEntityID()
 local root_id = EntityGetRootEntity( entity_id )
 local x, y = EntityGetTransform( entity_id )
 
-local souls = EntityGetInRaduisWithTag( x, y, radius, "soul")
+local souls = EntityGetInRadiusWithTag( x, y, radius, "soul")
 local count = #souls
 
 if count == 1 then
