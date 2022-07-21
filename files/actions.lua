@@ -148,7 +148,7 @@ local to_insert = {
 		custom_xml_file = "mods/moles_souls/files/entities/misc/gold_to_souls.xml",
 		action 		= function()
 			--add_projectile("mods/moles_souls/files/entities/misc/gold_to_souls.xml")
-			draw_actions( 1, true )
+			dofile_once("mods/moles_souls/files/entities/misc/gold_to_souls.lua")
 		end,
 	},
 	{
