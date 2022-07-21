@@ -149,6 +149,22 @@ local to_insert = {
 			draw_actions( 1, true )
 		end,
 	},
+	{
+		id          = "MOLES_SOULS_SOUL_HALO",
+		name 		= "Reaping Halo",
+		description = "Fires a halo of soul energy and causes enemies to drop their souls.",
+		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_halo.png",
+		related_projectiles	= {"mods/moles_souls/files/entities/projectiles/reaping_halo.xml"},
+		type 		= ACTION_TYPE_PROJECTILE,
+		spawn_level                       = "2,3,4,5", 
+		spawn_probability                 = "1,1,1,1", 
+		price = 160,
+		mana = 30,
+		action 		= function()
+			add_projectile("mods/moles_souls/files/entities/projectiles/reaping_halo.xml")
+			c.fire_rate_wait = c.fire_rate_wait + 10
+		end,
+	}
 }
 
 for k, v in ipairs(to_insert) do
