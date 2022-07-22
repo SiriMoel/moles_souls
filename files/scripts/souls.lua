@@ -5,6 +5,14 @@ gui = gui or GuiCreate()
 local souls = {};
 local store = stringstore.open_store(stringstore.noita.variable_storage_components(EntityGetWithTag("player_unit")[1]))
                   .souls;
+
+function tableSearch(t, x)
+    for i, v in ipairs(t) do
+        if v == x then
+            return i, v
+        end
+    end
+end
 GamePrint(type(store))
 
 function souls:spawn(type)
@@ -27,50 +35,79 @@ end
 
 function souls:kill(type)
     local tag = "soul_" .. type
-    if type == "any" then tag = "soul" end
+    if type == "any" then
+        tag = "soul"
+    end
     local souls = EntityGetWithTag(tag);
-    if (souls == nil) then 
+    if (souls == nil) then
         return error("");
     end
     EntityKill(souls[math.random(1, #souls)]);
 end
 
 function souls:add(type, num)
-    for i=1,num do
+    num = num or 0
+    for i = 1, num do
         if pcall(self.spawn(type)) then
             GamePrint("Err: Soul of type " .. type .. "could not be spawned");
-            return error("Soul of type " .. type .. "could not be spawned"); 
-        end;
+            return error("Soul of type " .. type .. "could not be spawned");
+        end
+        table.insert(store.data, type)
         store[type] = store[type] + 1;
         store["total"] = store["total"] + 1;
 
     end
-    
+
 end
 
 function souls:remove(type, num)
-    for i=1,num do
+    num = num or 0
+    for i = 1, num do
         if pcall(self.kill(type)) then
-            
-        else 
-        if type ~= "any" then store[type] = store[type] - 1 end;
-        store["total"] = store["total"] - 1;
+        end
+        if type ~= "any" then
+            local i, v = tableSearch(store.data, type)
+            table.remove(store.data, i)
+            store[type] = store[type] - 1
+            store["total"] = store["total"] - 1;
+        else
+            local x = store.data[math.random(1, #store.data)]
+            local i, v = tableSearch(store.data, x)
+            table.remove(store.data, i)
+            store[x] = store[x] - 1;
+            store["total"] = store["total"] - 1;
         end
     end
 end
 
-function souls:count(type) 
+function souls:count(type)
     type = type or "total"
     return store[type]
 end
 
+function souls:get(num)
+    num = num or 1
+    if num ~= 1 then
+        local arr = {}
+        for i = 1, num do
+            local a = math.random(1, #store.data)
+            table.insert(arr, store.data[a])
+        end
+        return arr
+    else
+        local a = math.random(1, #store.data)
+        return store.data[a]
+    end
+end
+
 function souls:init()
+    store["data"] = {}
     store["total"] = 0
     store["bat"] = 0
     store["fly"] = 0
     store["friendly"] = 0
     store["gilded"] = 0
-    store["mage"] = 0 
+    store["mage"] = 0
     store["orcs"] = 0
     store["slimes"] = 0
     store["spider"] = 0
