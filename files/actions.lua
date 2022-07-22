@@ -86,7 +86,7 @@ local to_insert = {
 			c.fire_rate_wait = c.fire_rate_wait + 5
 		end,
 	},
-	{
+	--[[{
 		id          = "MOLES_SOULS_WHISPER_SOUL_COUNT",
 		name 		= "Whisper Souls",
 		description = "Makes your wand whisper how many souls you have.",
@@ -102,7 +102,7 @@ local to_insert = {
 			c.fire_rate_wait    = c.fire_rate_wait + 0
 			draw_actions( 1, true )
 		end,
-	},
+	},]]--
 	{
 		id					= "MOLES_SOULS_REAPER_BLADE",
 		name				= "Reaper Blade",

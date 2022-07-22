@@ -17,7 +17,7 @@
 	</HomingComponent>
 
 	
-	<AreaDamageComponent
+	<!--<AreaDamageComponent
 		aabb_min.x="-10" 
 		aabb_min.y="-10" 
 		aabb_max.x="10" 
@@ -28,7 +28,7 @@
 		damage_type="DAMAGE_PROJECTILE"
 		circle_radius="8"
 		>
-	</AreaDamageComponent>
+	</AreaDamageComponent>-->
 	
 	<ParticleEmitterComponent 
 		emitted_material_name="soul_particles"
@@ -71,6 +71,7 @@
 		collide_with_world="0"
 		direction_random_rad="0"
 		penetrate_world="0"
+		damage="1"
 		>
 	</ProjectileComponent>
 
