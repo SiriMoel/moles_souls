@@ -62,6 +62,7 @@ end
 
 function souls:remove(type, num)
     num = num or 1
+    type = type or "any"
     for i = 1, num do
         if pcall(self.kill(type)) then
         end
