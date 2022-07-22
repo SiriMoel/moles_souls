@@ -49,7 +49,7 @@ function souls:add(type, num)
         if pcall(self.spawn, type) then
             table.insert(store.data, type)
             store[type] = store[type] + 1;
-            store["total"] = store["total"] + 1;
+            store.total = store.total + 1;
         else 
             GamePrint("Failed to spawn soul of type " .. type)
         end
@@ -67,13 +67,13 @@ function souls:remove(type, num)
                 local i, v = tableSearch(store.data, type)
                 table.remove(store.data, i)
                 store[type] = store[type] - 1
-                store["total"] = store["total"] - 1;
+                store.total = store.total - 1;
             else
                 local x = store.data[math.random(1, #store.data)]
                 local i, v = tableSearch(store.data, x)
                 table.remove(store.data, i)
                 store[x] = store[x] - 1;
-                store["total"] = store["total"] - 1;
+                store.total = store.total - 1;
             end
         else
 
@@ -105,18 +105,18 @@ end
 
 function souls:init()
     local store = stringstore.open_store(stringstore.noita.global("moles_souls"))
-    store["data"] = {}
-    store["total"] = 0
-    store["bat"] = 0
-    store["fly"] = 0
-    store["friendly"] = 0
-    store["gilded"] = 0
-    store["mage"] = 0
-    store["orcs"] = 0
-    store["slimes"] = 0
-    store["spider"] = 0
-    store["synthetic"] = 0
-    store["zombie"] = 0
-    store["worm"] = 0
+    store.data = {}
+    store.total = 0
+    store.bat = 0
+    store.fly = 0
+    store.friendly = 0
+    store.gilded = 0
+    store.mage = 0
+    store.orcs = 0
+    store.slimes = 0
+    store.spider = 0
+    store.synthetic = 0
+    store.zombie = 0
+    store.worm = 0
 end
 return souls
