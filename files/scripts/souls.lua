@@ -17,7 +17,7 @@ function souls:spawn(herd)
     if ("mods/moles_souls/files/entities/souls/soul_" .. herd .. ".xml") ~= nil then
         local is_gilded = math.random(1, 100)
         if is_gilded == 1 then
-            herd = "guilded"
+            herd = "gilded"
         end
         local child_id = EntityLoad("mods/moles_souls/files/entities/souls/soul_" .. herd .. ".xml", px, py)
         EntityAddChild(player, child_id)
@@ -68,7 +68,7 @@ function souls:init()
     store["bat"] = 0
     store["fly"] = 0
     store["friendly"] = 0
-    store["guilded"] = 0
+    store["gilded"] = 0
     store["mage"] = 0 
     store["orcs"] = 0
     store["slimes"] = 0
