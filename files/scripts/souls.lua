@@ -3,8 +3,9 @@ dofile_once("mods/moles_souls/lib/stringstore.lua")
 dofile_once("mods/moles_souls/lib/noitavariablestore.lua")
 gui = gui or GuiCreate()
 local souls = {};
-local store = stringstore.open_store(stringstore.noita.variable_storage_components(EntityGetWithTag("player_unit")[1]))
-                  .souls;
+local playerstore = stringstore.open_store(stringstore.noita.variable_storage_components(EntityGetWithTag("player_unit")[1]))
+if playerstore.souls == nil then playerstore.souls = {} end;
+local store = playerstore.souls
 
 function tableSearch(t, x)
     for i, v in ipairs(t) do
