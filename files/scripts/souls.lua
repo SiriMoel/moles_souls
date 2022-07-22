@@ -6,7 +6,7 @@ local store = stringstore.open_store(stringstore.noita.variable_storage_componen
                   .souls;
 GamePrint(type(store))
 
-function spawn(herd)
+function souls:spawn(herd)
     GamePrint(herd)
     local player = EntityGetWithTag("player_unit")[1]
     local px, py = EntityGetTransform(player)
@@ -24,19 +24,24 @@ function spawn(herd)
     end
 end
 
-function kill(herd)
+function souls:kill(herd)
     local tag = "soul_" .. herd
     if herd == "any" then tag = "soul" end
     local souls = EntityGetWithTag(tag)
     EntityKill(souls[math.random(1, #souls)])
 end
 
-function souls:add(herd)
-    spawn(herd);
+function souls:add(herd, num)
+    for i=1,num do
+        self.spawn(herd);
+    end
+
 end
 
-function souls:remove(herd)
-    kill(herd);
+function souls:remove(herd, num)
+    for i=1,num do
+        self.kill(herd);
+    end
 end
 
 return souls
