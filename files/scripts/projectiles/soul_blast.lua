@@ -22,6 +22,8 @@ if soul == nil then
 end
 
 GamePrint(tostring(soul))
+
+
 --ORCS
 if soul == "orcs" or "zombie" then
 --if EntityHasTag( soul, "soul_orcs" ) or EntityHasTag( soul, "soul_zombie" ) then
@@ -357,5 +359,5 @@ if soul == "bat" then
 	ComponentSetValue2( comp, "damage", projdamage )
 end
 
---EntityKill(soul)
+
 souls:remove(soul)
