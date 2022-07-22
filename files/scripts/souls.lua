@@ -27,21 +27,53 @@ end
 function souls:kill(herd)
     local tag = "soul_" .. herd
     if herd == "any" then tag = "soul" end
-    local souls = EntityGetWithTag(tag)
-    EntityKill(souls[math.random(1, #souls)])
+    local souls = EntityGetWithTag(tag);
+    if (souls == nil) then 
+        return error("");
+    end
+    EntityKill(souls[math.random(1, #souls)]);
 end
 
 function souls:add(herd, num)
     for i=1,num do
-        self.spawn(herd);
-    end
+        if pcall(self.spawn(herd)) then
+            GamePrint("Err: Soul of type " .. herd .. "could not be spawned");
+            return error("Soul of type " .. herd .. "could not be spawned"); 
+        end;
+        store[herd] = store[herd] + 1;
+        store["total"] = store["total"] + 1;
 
+    end
+    
 end
 
 function souls:remove(herd, num)
     for i=1,num do
-        self.kill(herd);
+        if pcall(self.kill(herd)) then
+            
+        else 
+        if herd ~= "any" then store[herd] = store[herd] - 1 end;
+        store["total"] = store["total"] - 1;
+        end
     end
 end
 
+function souls:count(herd) 
+    herd = herd or "total"
+    return store[herd]
+end
+
+function souls:init()
+    store["total"] = 0
+    store["bat"] = 0
+    store["fly"] = 0
+    store["friendly"] = 0
+    store["guilded"] = 0
+    store["mage"] = 0 
+    store["orcs"] = 0
+    store["slimes"] = 0
+    store["spider"] = 0
+    store["synthetic"] = 0
+    store["zombie"] = 0
+end
 return souls

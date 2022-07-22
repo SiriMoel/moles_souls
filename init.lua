@@ -2,6 +2,7 @@ ModLuaFileAppend( "data/scripts/gun/gun_actions.lua", "mods/moles_souls/files/ac
 ModMaterialsFileAdd("mods/moles_souls/files/materials.xml")
 
 local nxml = dofile_once("mods/moles_souls/lib/nxml.lua")
+local souls = dofile_once("mods/moles_souls/files/scripts/souls.lua")
 
 local translations = ModTextFileGetContent( "data/translations/common.csv" );
 if translations ~= nil then
@@ -22,8 +23,7 @@ function OnModPostInit()
 end
 
 function OnPlayerSpawned( player_entity )
-    --[[local child_id = EntityLoad( "mods/moles_souls/files/entities/souls/soul_gilded.xml", px, py )
-    EntityAddChild( player_entity, child_id )]]--
+	souls:init()
 end
 
 function OnWorldPostUpdate()
