@@ -1,6 +1,5 @@
 dofile_once("mods/moles_souls/files/utils.lua")
 dofile_once("mods/moles_souls/lib/stringstore.lua")
-gui = gui or GuiCreate()
 local souls = {};
 function tableSearch(t, x)
     for i, v in ipairs(t) do
@@ -9,6 +8,7 @@ function tableSearch(t, x)
         end
     end
 end
+
 function souls.spawn(type)
     local store = stringstore.open_store(dofile("mods/moles_souls/lib/noitaglobalstore.lua")("moles_souls"))
     local player = EntityGetWithTag("player_unit")[1]
@@ -115,8 +115,5 @@ function souls:init()
     store["spider"] = 0
     store["synthetic"] = 0
     store["zombie"] = 0
-end
-function guiStart()
-
 end
 return souls
