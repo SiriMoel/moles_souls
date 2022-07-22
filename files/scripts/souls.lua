@@ -46,7 +46,7 @@ function souls:kill(type)
 end
 
 function souls:add(type, num)
-    num = num or 0
+    num = num or 1
     for i = 1, num do
         if pcall(self.spawn(type)) then
             GamePrint("Err: Soul of type " .. type .. "could not be spawned");
@@ -61,7 +61,7 @@ function souls:add(type, num)
 end
 
 function souls:remove(type, num)
-    num = num or 0
+    num = num or 1
     for i = 1, num do
         if pcall(self.kill(type)) then
         end
