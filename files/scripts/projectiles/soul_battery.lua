@@ -1,12 +1,10 @@
 dofile("mods/moles_souls/files/utils.lua")
-
+local souls = dofile("mods/moles_souls/files/scripts/souls.lua")
 local entity_id = GetUpdatedEntityID()
 local root_id = EntityGetRootEntity( entity_id )
 local x, y = EntityGetTransform( entity_id )
 
-local souls = EntityGetInRadiusWithTag( x, y, radius, "soul" )
-local count = #souls
-
+local count = souls.count["total"];
 if count == 1 then
 	GamePrint(count .. " soul consumed!")
 else
@@ -41,9 +39,7 @@ edit_component( effect_id, "ParticleEmitterComponent", function(comp3,vars)
 end)
 
 --kills souls
-for i,soul_id in ipairs(souls) do
-	EntityKill(soul_id)
-end
+souls.remove("any", count)
 
 --[[if ( who_shot ~= nil ) and ( comp ~= nil ) then
 	for i,projectile_id in ipairs(projectiles) do
