@@ -6,7 +6,7 @@ local entity_id = GetUpdatedEntityID()
 local root_id = EntityGetRootEntity( entity_id )
 local x, y = EntityGetTransform( entity_id )
 
-local soul = souls:get()
+local soul = souls:get(1)
 --local soul = EntityGetInRadiusWithTag( x, y, radius, "soul")[1]
 
 local comp = EntityGetFirstComponent( entity_id, "ProjectileComponent" )
@@ -21,6 +21,7 @@ if soul == nil then
     EntityKill(entity_id)
 end
 
+GamePrint(tostring(soul))
 --ORCS
 if soul == "orcs" or "zombie" then
 --if EntityHasTag( soul, "soul_orcs" ) or EntityHasTag( soul, "soul_zombie" ) then
@@ -356,4 +357,5 @@ if soul == "bat" then
 	ComponentSetValue2( comp, "damage", projdamage )
 end
 
-EntityKill(soul)
+--EntityKill(soul)
+souls:remove(soul)

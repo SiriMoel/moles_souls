@@ -29,11 +29,11 @@
 
     <AreaDamageComponent
 		_tags="enabled_in_hand"
-		aabb_min.x="-30" 
-		aabb_min.y="-6" 
-		aabb_max.x="30" 
-		aabb_max.y="6" 
-		damage_per_frame="0.9"
+		aabb_min.x="-12" 
+		aabb_min.y="-12" 
+		aabb_max.x="12" 
+		aabb_max.y="12" 
+		damage_per_frame="0.2"
 		update_every_n_frame="1"
 		entities_with_tag="enemy"
 		damage_type="DAMAGE_SLICE"

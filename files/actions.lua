@@ -66,7 +66,7 @@ local to_insert = {
 		max_uses = 5,
 		action 		= function()
 			add_projectile("mods/moles_souls/files/entities/projectiles/reaping_field.xml")
-			c.fire_rate_wait = c.fire_rate_wait + 15
+			c.fire_rate_wait = c.fire_rate_wait + 30
 		end,
 	},
 	{
@@ -83,7 +83,7 @@ local to_insert = {
 		max_uses = 15,
 		action 		= function()
 			add_projectile("mods/moles_souls/files/entities/projectiles/soul_fueled_healing_bolt.xml")
-			c.fire_rate_wait = c.fire_rate_wait + 5
+			c.fire_rate_wait = c.fire_rate_wait + 15
 		end,
 	},
 	--[[{
@@ -160,10 +160,10 @@ local to_insert = {
 		spawn_level                       = "2,3,4,5", 
 		spawn_probability                 = "1,1,1,1", 
 		price = 160,
-		mana = 30,
+		mana = 80,
 		action 		= function()
 			add_projectile("mods/moles_souls/files/entities/projectiles/reaping_halo.xml")
-			c.fire_rate_wait = c.fire_rate_wait + 10
+			c.fire_rate_wait = c.fire_rate_wait + 20
 		end,
 	}
 }
