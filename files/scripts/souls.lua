@@ -1,5 +1,6 @@
 dofile_once("mods/moles_souls/files/utils.lua")
-dofile_once("mods/moles_souls/lib/stringstore.lua")
+dofile("mods/moles_souls/lib/stringstore/stringstore.lua")
+dofile("mods/moles_souls/lib/stringstore/noitaglobalstore.lua")
 local souls = {};
 
 function tableSearch(t, x)
@@ -11,7 +12,7 @@ function tableSearch(t, x)
 end
 
 function souls.spawn(type)
-    local store = stringstore.open_store(dofile("mods/moles_souls/lib/noitaglobalstore.lua")("moles_souls"))
+    local store = stringstore.open_store(stringstore.noita.global("moles_souls"))
     local player = EntityGetWithTag("player_unit")[1]
     local px, py = EntityGetTransform(player)
     if type == "synthetic" then
@@ -29,7 +30,7 @@ function souls.spawn(type)
 end
 
 function souls.kill(type)
-    local store = stringstore.open_store(dofile("mods/moles_souls/lib/noitaglobalstore.lua")("moles_souls"))
+    local store = stringstore.open_store(stringstore.noita.global("moles_souls"))
     local tag = "soul_" .. type
     if type == "any" then
         tag = "soul"
@@ -42,7 +43,7 @@ function souls.kill(type)
 end
 
 function souls:add(type, num)
-    local store = stringstore.open_store(dofile("mods/moles_souls/lib/noitaglobalstore.lua")("moles_souls"))
+    local store = stringstore.open_store(stringstore.noita.global("moles_souls"))
     num = num or 1
     for i = 1, num do
         if pcall(self.spawn, type) then
@@ -57,7 +58,7 @@ function souls:add(type, num)
 end
 
 function souls:remove(type, num)
-    local store = stringstore.open_store(dofile("mods/moles_souls/lib/noitaglobalstore.lua")("moles_souls"))
+    local store = stringstore.open_store(stringstore.noita.global("moles_souls"))
     num = num or 1
     type = type or "any"
     for i = 1, num do
@@ -81,13 +82,13 @@ function souls:remove(type, num)
 end
 
 function souls:count(type)
-    local store = stringstore.open_store(dofile("mods/moles_souls/lib/noitaglobalstore.lua")("moles_souls"))
+    local store = stringstore.open_store(stringstore.noita.global("moles_souls"))
     type = type or "total"
     return store[type]
 end
 
 function souls:get(num)
-    local store = stringstore.open_store(dofile("mods/moles_souls/lib/noitaglobalstore.lua")("moles_souls"))
+    local store = stringstore.open_store(stringstore.noita.global("moles_souls"))
     num = num or 1
     if num ~= 1 then
         local arr = {}
@@ -103,7 +104,7 @@ function souls:get(num)
 end
 
 function souls:init()
-    local store = stringstore.open_store(dofile("mods/moles_souls/lib/noitaglobalstore.lua")("moles_souls"))
+    local store = stringstore.open_store(stringstore.noita.global("moles_souls"))
     store["data"] = {}
     store["total"] = 0
     store["bat"] = 0
