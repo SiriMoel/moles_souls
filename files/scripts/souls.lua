@@ -1,12 +1,7 @@
 dofile_once("mods/moles_souls/files/utils.lua")
 dofile_once("mods/moles_souls/lib/stringstore.lua")
-dofile_once("mods/moles_souls/lib/noitavariablestore.lua")
 gui = gui or GuiCreate()
 local souls = {};
-local playerstore = stringstore.open_store(stringstore.noita.variable_storage_components(EntityGetWithTag("player_unit")[1]))
-if playerstore.souls == nil then playerstore.souls = {} end;
-local store = playerstore.souls
-
 function tableSearch(t, x)
     for i, v in ipairs(t) do
         if v == x then
@@ -14,10 +9,8 @@ function tableSearch(t, x)
         end
     end
 end
-GamePrint(type(store))
-
-function souls:spawn(type)
-    GamePrint(type)
+function souls.spawn(type)
+    local store = stringstore.open_store(dofile("mods/moles_souls/lib/noitaglobalstore.lua")("moles_souls"))
     local player = EntityGetWithTag("player_unit")[1]
     local px, py = EntityGetTransform(player)
     if type == "synthetic" then
@@ -34,7 +27,8 @@ function souls:spawn(type)
     end
 end
 
-function souls:kill(type)
+function souls.kill(type)
+    local store = stringstore.open_store(dofile("mods/moles_souls/lib/noitaglobalstore.lua")("moles_souls"))
     local tag = "soul_" .. type
     if type == "any" then
         tag = "soul"
@@ -47,47 +41,52 @@ function souls:kill(type)
 end
 
 function souls:add(type, num)
+    local store = stringstore.open_store(dofile("mods/moles_souls/lib/noitaglobalstore.lua")("moles_souls"))
     num = num or 1
     for i = 1, num do
-        if pcall(self.spawn(type)) then
-            GamePrint("Err: Soul of type " .. type .. "could not be spawned");
-            return error("Soul of type " .. type .. "could not be spawned");
+        if pcall(self.spawn, type) then
+            table.insert(store.data, type)
+            store[type] = store[type] + 1;
+            store["total"] = store["total"] + 1;
+        else 
+            GamePrint("Failed to spawn soul of type " .. type)
         end
-        table.insert(store.data, type)
-        store[type] = store[type] + 1;
-        store["total"] = store["total"] + 1;
-
     end
 
 end
 
 function souls:remove(type, num)
+    local store = stringstore.open_store(dofile("mods/moles_souls/lib/noitaglobalstore.lua")("moles_souls"))
     num = num or 1
     type = type or "any"
     for i = 1, num do
-        if pcall(self.kill(type)) then
-        end
-        if type ~= "any" then
-            local i, v = tableSearch(store.data, type)
-            table.remove(store.data, i)
-            store[type] = store[type] - 1
-            store["total"] = store["total"] - 1;
+        if pcall(self.kill, type) then
+            if type ~= "any" then
+                local i, v = tableSearch(store.data, type)
+                table.remove(store.data, i)
+                store[type] = store[type] - 1
+                store["total"] = store["total"] - 1;
+            else
+                local x = store.data[math.random(1, #store.data)]
+                local i, v = tableSearch(store.data, x)
+                table.remove(store.data, i)
+                store[x] = store[x] - 1;
+                store["total"] = store["total"] - 1;
+            end
         else
-            local x = store.data[math.random(1, #store.data)]
-            local i, v = tableSearch(store.data, x)
-            table.remove(store.data, i)
-            store[x] = store[x] - 1;
-            store["total"] = store["total"] - 1;
+
         end
     end
 end
 
 function souls:count(type)
+    local store = stringstore.open_store(dofile("mods/moles_souls/lib/noitaglobalstore.lua")("moles_souls"))
     type = type or "total"
     return store[type]
 end
 
 function souls:get(num)
+    local store = stringstore.open_store(dofile("mods/moles_souls/lib/noitaglobalstore.lua")("moles_souls"))
     num = num or 1
     if num ~= 1 then
         local arr = {}
@@ -103,6 +102,7 @@ function souls:get(num)
 end
 
 function souls:init()
+    local store = stringstore.open_store(dofile("mods/moles_souls/lib/noitaglobalstore.lua")("moles_souls"))
     store["data"] = {}
     store["total"] = 0
     store["bat"] = 0
@@ -116,7 +116,6 @@ function souls:init()
     store["synthetic"] = 0
     store["zombie"] = 0
 end
-
 function guiStart()
 
 end

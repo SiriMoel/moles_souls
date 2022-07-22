@@ -2,8 +2,6 @@ ModLuaFileAppend( "data/scripts/gun/gun_actions.lua", "mods/moles_souls/files/ac
 ModMaterialsFileAdd("mods/moles_souls/files/materials.xml")
 
 local nxml = dofile_once("mods/moles_souls/lib/nxml.lua")
-local souls = dofile_once("mods/moles_souls/files/scripts/souls.lua")
-
 local translations = ModTextFileGetContent( "data/translations/common.csv" );
 if translations ~= nil then
 	while translations:find("\r\n\r\n") do
@@ -23,7 +21,10 @@ function OnModPostInit()
 end
 
 function OnPlayerSpawned( player_entity )
+	local souls = dofile_once("mods/moles_souls/files/scripts/souls.lua")
+	if GameHasFlagRun("moles_souls_has_init") then return end
 	souls:init()
+	GameAddFlagRun("moles_souls_has_init")
 end
 
 function OnWorldPostUpdate()

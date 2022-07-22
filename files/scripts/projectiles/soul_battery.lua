@@ -39,7 +39,7 @@ edit_component( effect_id, "ParticleEmitterComponent", function(comp3,vars)
 end)
 
 --kills souls
-souls.remove("any", count)
+souls:remove("any", count)
 
 --[[if ( who_shot ~= nil ) and ( comp ~= nil ) then
 	for i,projectile_id in ipairs(projectiles) do
