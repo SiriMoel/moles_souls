@@ -1,10 +1,13 @@
 dofile("mods/moles_souls/files/utils.lua")
 
+local souls = dofile("mods/moles_souls/files/scripts/souls.lua")
+
 local entity_id = GetUpdatedEntityID()
 local root_id = EntityGetRootEntity( entity_id )
 local x, y = EntityGetTransform( entity_id )
 
-local soul = EntityGetInRadiusWithTag( x, y, radius, "soul")[1]
+local soul = souls:get()
+--local soul = EntityGetInRadiusWithTag( x, y, radius, "soul")[1]
 
 local comp = EntityGetFirstComponent( entity_id, "ProjectileComponent" )
 local projdamage = ComponentGetValue2( comp, "damage" )
@@ -13,15 +16,14 @@ local exprad = ComponentObjectGetValue( comp, "config_explosion", "explosion_rad
 local cursedamage = ComponentObjectGetValue( comp, "damage_by_type", "curse" )
 local icedamage = ComponentObjectGetValue( comp, "damage_by_type", "ice" )
 
-
 if soul == nil then
 	GamePrint("You have no souls.")
     EntityKill(entity_id)
 end
 
-
 --ORCS
-if EntityHasTag( soul, "soul_orcs" ) or EntityHasTag( soul, "soul_zombie" ) then
+if soul == "orcs" or "zombie" then
+--if EntityHasTag( soul, "soul_orcs" ) or EntityHasTag( soul, "soul_zombie" ) then
 
     EntityAddComponent( entity_id, "SineWaveComponent", {
         _enabled="1",
@@ -69,7 +71,8 @@ end
 
 
 --GILDED
-if EntityHasTag( soul, "soul_gilded" ) then
+if soul == "gilded" then
+--if EntityHasTag( soul, "soul_gilded" ) then
 
     EntityAddComponent( entity_id, "ParticleEmitterComponent", {
         _enabled="1",
@@ -123,7 +126,8 @@ if EntityHasTag( soul, "soul_gilded" ) then
 end
 
 --SPIDER
-if EntityHasTag( soul, "soul_spider" ) then
+if soul == "spider" then
+--if EntityHasTag( soul, "soul_spider" ) then
 	
 	EntityAddComponent( entity_id, "ParticleEmitterComponent", {
         _enabled="1",
@@ -170,7 +174,8 @@ end
 
 
 --MAGE
-if EntityHasTag( soul, "soul_mage" ) then
+if soul == "mage" then
+--if EntityHasTag( soul, "soul_mage" ) then
 
     EntityAddComponent( entity_id, "ParticleEmitterComponent", {
         _enabled="1",
@@ -214,7 +219,8 @@ if EntityHasTag( soul, "soul_mage" ) then
 end
 
 --SLIMES
-if EntityHasTag( soul, "soul_slimes" ) then
+if soul == "slimes" then
+--if EntityHasTag( soul, "soul_slimes" ) then
 	
 	EntityAddComponent( entity_id, "ParticleEmitterComponent", {
         _enabled="1",
@@ -258,7 +264,8 @@ if EntityHasTag( soul, "soul_slimes" ) then
 end
 
 --FLY
-if EntityHasTag( soul, "soul_fly" ) then
+if soul == "fly" then
+--if EntityHasTag( soul, "soul_fly" ) then
 
 	EntityAddComponent( entity_id, "ParticleEmitterComponent", {
         _enabled="1",
@@ -307,7 +314,8 @@ end
 
 
 --BAT
-if EntityHasTag( soul, "soul_bat" ) then
+if soul == "bat" then
+--if EntityHasTag( soul, "soul_bat" ) then
 
 	EntityAddComponent( entity_id, "ParticleEmitterComponent", {
         _enabled="1",
