@@ -6,7 +6,8 @@ local entity_id = GetUpdatedEntityID()
 local root_id = EntityGetRootEntity( entity_id )
 local x, y = EntityGetTransform( entity_id )
 
-local soul = souls:get(1)
+local soul1 = souls:get(1)
+local soul = soul1
 --local soul = EntityGetInRadiusWithTag( x, y, radius, "soul")[1]
 
 local comp = EntityGetFirstComponent( entity_id, "ProjectileComponent" )
@@ -16,14 +17,14 @@ local exprad = ComponentObjectGetValue( comp, "config_explosion", "explosion_rad
 local cursedamage = ComponentObjectGetValue( comp, "damage_by_type", "curse" )
 local icedamage = ComponentObjectGetValue( comp, "damage_by_type", "ice" )
 
-if soul == nil then
+--[[if soul == nil then
 	GamePrint("You have no souls.")
     EntityKill(entity_id)
-end
+end]]--
 
 GamePrint(tostring(soul))
 
-
+--[[
 --ORCS
 if soul == "orcs" or "zombie" then
 --if EntityHasTag( soul, "soul_orcs" ) or EntityHasTag( soul, "soul_zombie" ) then
@@ -358,6 +359,6 @@ if soul == "bat" then
 
 	ComponentSetValue2( comp, "damage", projdamage )
 end
+]]--
 
-
-souls:remove(soul)
+souls:remove(soul1)
