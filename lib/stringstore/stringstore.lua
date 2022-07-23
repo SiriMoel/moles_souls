@@ -88,29 +88,6 @@ function stringstore.open_store(interfaceInit, name)
             local type = interface.get_type(key)
             return convert_from_string(type, val, interfaceInit, name, key)
         end,
-
-        __len = function()
-            local meta = interface.get_meta()
-            local len = 0
-            for str in string.gmatch(meta, '([^","]+)') do
-                len = len + 1
-            end
-            return len
-        end,
-        __pairs = function(tbl)
-            local data = {}
-            for key in string.gmatch(interface.get_meta(), '([^","]+)') do
-                data[key] = convert_from_string(interface.get_type(key), interface.get(key), interfaceInit, name, key)
-            end
-            local function stateless_iter(tbl, k)
-                local v
-                k, v = next(data, k)
-                if v ~= nil then
-                    return k, v
-                end
-            end
-            return stateless_iter, tbl, nil
-        end
     })
     return store
 end
