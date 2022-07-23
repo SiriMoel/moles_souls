@@ -34,7 +34,9 @@ end
 
 function stringstore.open_store(interfaceInit, name)
     interface = interfaceInit(name)
-	if interface.get_meta() == nil then interface.set_meta("")end
+	if interface.get_meta() == nil then
+		interface.set_meta("")
+	end
     if not interface.set_type then
         error("Missing storeinfo 'set_type' field")
     end
@@ -56,6 +58,7 @@ function stringstore.open_store(interfaceInit, name)
             interface.restrict(tostring(key))
             if val == nil then
                 local meta = interface.get_meta()
+
                 local s = ""
                 for str in string.gmatch(meta, '([^","]+)') do
                     if (str ~= key) then
@@ -95,8 +98,8 @@ function stringstore.open_store(interfaceInit, name)
             return len
         end,
         __pairs = function(tbl)
-			local data = {}
-			for key in string.gmatch(interface.get_meta(), '([^" "]+)') do
+            local data = {}
+            for key in string.gmatch(interface.get_meta(), '([^","]+)') do
                 data[key] = convert_from_string(interface.get_type(key), interface.get(key), interfaceInit, name, key)
             end
             local function stateless_iter(tbl, k)

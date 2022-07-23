@@ -23,7 +23,7 @@ noitaGlobalStore = function(base_name)
 		end,
 
 		get_meta = function() 
-			GlobalsGetValue(base_name .. ":meta")
+			return GlobalsGetValue(base_name .. ":meta")
 		end,
 
 		set_meta = function(value)
