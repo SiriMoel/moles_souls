@@ -1,64 +1,115 @@
-stringstore = { stores = {} }
-
-function stringstore.convert_to_string(val)
-	local val_type = type(val)
-	if val_type == "function" then
-		error("Serializing functions is not supported")
-	end
-
-	return tostring(val)
+stringstore = {}
+function convert_to_string(val)
+    local val_type = type(val)
+    if val_type == "function" then
+        error("Serializing functions is not supported")
+    end
+    if val_type == "userdata" then
+        error("Serializing C userdata is not supported")
+    end
+    if val_type == "thread" then
+        error("Serializing thread objects is not supported")
+    end
+    return tostring(val)
 end
 
-function stringstore.convert_from_string(target_type, key, storeinfo)
-	if target_type == "nil" then return nil end
-	if target_type == "string" then return storeinfo.get(key) end
-	if target_type == "number" then return tonumber(storeinfo.get(key)) end
-	if target_type == "table" then
-		return stringstore.open_store(storeinfo, key, storeinfo.get_sub_prefix(key))
-	end
-	if target_type == "boolean" then return storeinfo.get(key) == "true" end
-	error("Unsupported target type: " .. target_type)
+function convert_from_string(target_type, value, interfaceInit, name, key)
+    if target_type == "nil" then
+        return nil
+    end
+    if target_type == "string" then
+        return value
+    end
+    if target_type == "number" then
+        return tonumber(value)
+    end
+    if target_type == "table" then
+        return stringstore.open_store(interfaceInit, name .. '.' .. key)
+    end
+    if target_type == "boolean" then
+        return value == "true"
+    end
+    error("Unsupported target type: " .. target_type)
 end
 
-function stringstore.open_store(storeinfo, base_key, key_prefix)
-	if not storeinfo.set_type then error("Missing storeinfo 'set_type' field") end
-	if not storeinfo.set then error("Missing storeinfo 'set' field") end	
-	if not storeinfo.get_type then error("Missing storeinfo 'get_type' field") end
-	if not storeinfo.get then error("Missing storeinfo 'get' field") end
+function stringstore.open_store(interfaceInit, name)
+    interface = interfaceInit(name)
+	if interface.get_meta() == nil then interface.set_meta("")end
+    if not interface.set_type then
+        error("Missing storeinfo 'set_type' field")
+    end
+    if not interface.set then
+        error("Missing storeinfo 'set' field")
+    end
+    if not interface.get_type then
+        error("Missing storeinfo 'get_type' field")
+    end
+    if not interface.get then
+        error("Missing storeinfo 'get' field")
+    end
 
-	if not base_key then base_key = "" end
+    interface.restrict = interface.restrict or function(x)
+    end
+    local store = {};
+    setmetatable(store, {
+        __newindex = function(self, key, val)
+            interface.restrict(tostring(key))
+            if val == nil then
+                local meta = interface.get_meta()
+                local s = ""
+                for str in string.gmatch(meta, '([^","]+)') do
+                    if (str ~= key) then
+                        s = s .. "," .. str
+                    end
+                end
+                return
+            end
+            interface.set_meta(interface.get_meta() .. "," .. key)
+            local t = type(val)
+            if t == "table" then
+                for k, v in pairs(val) do
+                    interface.set_type(key .. "." .. k, type(v))
+                    interface.set(key .. "." .. k, convert_to_string(v))
+                end
+                interface.set_type(key, t)
+            else
+                local value = convert_to_string(val)
+                interface.set_type(key, t)
+                interface.set(key, value)
+            end
+        end,
 
-	return setmetatable({},
-	{
-		__newindex = function(self, key, val)
-			storeinfo.restrict(tostring(key))
-			key = storeinfo.get_typed_key(key, type(key))
-			if key_prefix then
-				key = key_prefix .. key
-			end
-			local val_type = type(val)
-			storeinfo.set_type(key, val_type)
-			if (val_type == "table") then
-				for k, v in pairs(val) do
-					stringstore.convert_from_string("table", key, storeinfo)[k] = v
-				end
-			else
-				storeinfo.set(key, tostring(val))
-			end
+        __index = function(self, key)
+            interface.restrict(tostring(key))
+            local val = interface.get(key)
+            local type = interface.get_type(key)
+            return convert_from_string(type, val, interfaceInit, name, key)
+        end,
 
-		end,
-
-		__index = function(self, key)
-			storeinfo.restrict(tostring(key))
-			key = storeinfo.get_typed_key(key, type(key))
-			if key_prefix then
-				key = key_prefix .. key
-			end
-			local val_type = storeinfo.get_type(key)
-			if (val_type == nil) then return nil end
-			return stringstore.convert_from_string(val_type, key, storeinfo)
-		end
-	})
+        __len = function()
+            local meta = interface.get_meta()
+            local len = 0
+            for str in string.gmatch(meta, '([^","]+)') do
+                len = len + 1
+            end
+            return len
+        end,
+        __pairs = function(tbl)
+			local data = {}
+			for key in string.gmatch(interface.get_meta(), '([^" "]+)') do
+                data[key] = convert_from_string(interface.get_type(key), interface.get(key), interfaceInit, name, key)
+            end
+            local function stateless_iter(tbl, k)
+                local v
+                k, v = next(data, k)
+                if v ~= nil then
+                    return k, v
+                end
+            end
+            return stateless_iter, tbl, nil
+        end
+    })
+    return store
 end
 
 return stringstore
