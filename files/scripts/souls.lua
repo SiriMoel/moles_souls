@@ -20,7 +20,7 @@ function souls.spawn(type)
         return
     end
     if ("mods/moles_souls/files/entities/souls/soul_" .. type .. ".xml") ~= nil then
-        local is_gilded = math.random(1, 100)
+        local is_gilded = math.random(2, 100)
         if is_gilded == 1 then
             type = "gilded"
         end
