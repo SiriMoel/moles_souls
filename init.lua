@@ -33,3 +33,16 @@ end
 function OnPlayerDied()
 
 end
+
+function OnModSettingChanged()
+
+	if not ModSettingGet( "moles_souls.show_souls" ) then
+
+		local souls = EntityGetWithTag("soul")
+
+		for i,soul_id in ipairs(souls) do
+			EntityKill(soul_id)
+		end
+
+	end
+end
