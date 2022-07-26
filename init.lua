@@ -34,7 +34,7 @@ function OnPlayerDied()
 
 end
 
-function OnModSettingChanged()
+function OnModSettingsChanged()
 
 	if not ModSettingGet( "moles_souls.show_souls" ) then
 
