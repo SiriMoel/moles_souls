@@ -185,6 +185,25 @@ local to_insert = {
 			c.spread_degrees = c.spread_degrees + 14.0
 		end,
 	},
+	{
+		id          = "MOLES_SOULS_SOUL_SHOTGUN_TRIGGER",
+		name 		= "Soul Split with Trigger",
+		description = "Splits a soul into 3 projectiles.",
+		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_shotgun_trigger.png",
+		related_projectiles	= {"mods/moles_souls/files/entities/projectiles/soul_shotgun.xml",3},
+		type 		= ACTION_TYPE_PROJECTILE,
+		spawn_level                       = "2,3,4,5", 
+		spawn_probability                 = "1,1,1,1", 
+		price = 160,
+		mana = 25,
+		action 		= function()
+			add_projectile_trigger_hit_world("mods/moles_souls/files/entities/projectiles/soul_shotgun.xml")
+			add_projectile_trigger_hit_world("mods/moles_souls/files/entities/projectiles/soul_shotgun.xml")
+			add_projectile_trigger_hit_world("mods/moles_souls/files/entities/projectiles/soul_shotgun.xml")
+			c.fire_rate_wait = c.fire_rate_wait + 20
+			c.spread_degrees = c.spread_degrees + 14.0
+		end,
+	},
 }
 
 for k, v in ipairs(to_insert) do
