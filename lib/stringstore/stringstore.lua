@@ -88,6 +88,14 @@ function stringstore.open_store(interfaceInit, name)
             local type = interface.get_type(key)
             return convert_from_string(type, val, interfaceInit, name, key)
         end,
+
+        __len = function(o) 
+            local l = 0
+            for str in string.gmatch(meta, '([^","]+)') do
+                l = l + 1;
+            end
+            return l;
+        end
     })
     return store
 end
