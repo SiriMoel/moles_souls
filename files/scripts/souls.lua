@@ -16,6 +16,7 @@ local soulTypes = {
     "worm"
 }
 
+
 function tableSearch(t, x)
     for i, v in ipairs(t) do
         if v == x then
@@ -38,6 +39,9 @@ function souls.spawn(type)
     local store = stringstore.open_store(noitaGlobalStore, "moles_souls")
     local player = EntityGetWithTag("player_unit")[1]
     local px, py = EntityGetTransform(player)
+
+    if not ModSettingGet( "moles_souls.show_souls" ) then return end
+    
     if type == "synthetic" then
         EntityAddChild(player, EntityLoad("mods/moles_souls/files/entities/souls/soul_synthetic.xml", px, py))
         return
