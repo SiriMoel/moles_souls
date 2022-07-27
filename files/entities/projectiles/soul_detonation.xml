@@ -24,7 +24,7 @@
 	shoot_light_flash_r="10"
     shoot_light_flash_g="255"
     shoot_light_flash_b="255"
-    lifetime="2" >
+    lifetime="10" >
     <config_explosion
       never_cache="1" 
       camera_shake="4.5" 
@@ -44,17 +44,17 @@
       physics_explosion_power.max="0.3" 
       physics_throw_enabled="1" 
       shake_vegetation="0" 
-	  spark_material="spark"
+	  spark_material="soul_particles_green"
       sparks_count_min="60"
 	  sparks_count_max="80"
 	  sparks_enabled="1"
       light_fade_time="0.8" 
       stains_enabled="1" 
       stains_image="data/temp/explosion_stain.png" 
-	  audio_event_name="explosions/fire"
+
 	  >
     </config_explosion>
-  </ProjectileComponent>
+  </ProjectileComponent> <!--	  audio_event_name="explosions/fire" -->
 
   	<LuaComponent
 		script_source_file="mods/moles_souls/files/scripts/projectiles/soul_explosion.lua"

@@ -8,9 +8,8 @@ local x, y = EntityGetTransform( entity_id )
 
 local soul = souls:get(1)
 
-local list = getSoulList()
 
-if #list == 0 or #list == nil then
+if soul == nil then
 	GamePrint("You have no souls.")
 
 	local projcomp = EntityGetFirstComponent( entity_id, "ProjectileComponent" )
