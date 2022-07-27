@@ -33,7 +33,7 @@ end
 GamePrint(soul)
 
 --ORCS
-if soul == "orcs" or "zombie" then
+if soul == "orcs" or soul == "zombie" then
 --if EntityHasTag( soul, "soul_orcs" ) or EntityHasTag( soul, "soul_zombie" ) then
 
     EntityAddComponent( entity_id, "SineWaveComponent", {

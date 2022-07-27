@@ -71,8 +71,8 @@ local to_insert = {
 	},
 	{
 		id          = "MOLES_SOULS_SOUL_FUELED_HEALING_BOLT",
-		name 		= "Soul Fueled Healing Bolt",
-		description = "Consumes a portion of your souls to create a healing projectie.",
+		name 		= "Expel Healing Soul",
+		description = "Consumes a portion of your souls to shoot a healing soul.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_fueled_healing_bolt.png",
 		related_projectiles	= {"mods/moles_souls/files/entities/projectiles/soul_fueled_healing_bolt.xml"},
 		type 		= ACTION_TYPE_PROJECTILE,
@@ -140,11 +140,13 @@ local to_insert = {
 		description = "Converts an amount of gold into a soul.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/gold_to_souls.png",
 		related_projectiles	= {"mods/moles_souls/files/entities/misc/gold_to_souls.xml"},
+		never_unlimited = true,
 		type 		= ACTION_TYPE_UTILITY,
 		spawn_level                       = "1,2,3,4,5",
 		spawn_probability                 = "1,1,1,1,1",
 		price = 200,
 		mana = 30,
+		max_uses = 3,
 		custom_xml_file = "mods/moles_souls/files/entities/misc/gold_to_souls.xml",
 		action 		= function()
 			dofile("mods/moles_souls/files/scripts/projectiles/gold_to_souls.lua")
@@ -166,7 +168,7 @@ local to_insert = {
 			c.fire_rate_wait = c.fire_rate_wait + 40
 		end,
 	},
-	{
+	--[[{
 		id          = "MOLES_SOULS_SOUL_SHOTGUN",
 		name 		= "Soul Split",
 		description = "Splits a soul into 3 projectiles.",
@@ -184,8 +186,8 @@ local to_insert = {
 			c.fire_rate_wait = c.fire_rate_wait + 10
 			c.spread_degrees = c.spread_degrees + 14.0
 		end,
-	},
-	{
+	},]]--
+	--[[{
 		id          = "MOLES_SOULS_SOUL_SHOTGUN_TRIGGER",
 		name 		= "Soul Split with Trigger",
 		description = "Splits a soul into 3 projectiles.",
@@ -202,6 +204,47 @@ local to_insert = {
 			add_projectile_trigger_hit_world("mods/moles_souls/files/entities/projectiles/soul_shotgun.xml")
 			c.fire_rate_wait = c.fire_rate_wait + 20
 			c.spread_degrees = c.spread_degrees + 14.0
+		end,
+	},]]--
+	{
+		id          = "MOLES_SOULS_LANTERN", -- WIP
+		name 		= "Soul Lantern",
+		description = "Releases a portion of your souls in a burst of incredible power.",
+		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_lantern.png",
+		related_projectiles	= {"mods/moles_souls/files/entities/projectiles/reaping_halo.xml"},
+		related_extra_entities = { "data/entities/misc/effect_meteor_rain.xml" },
+		never_unlimited		= true,
+		type 		= ACTION_TYPE_STATIC_PROJECTILE,
+		spawn_level                       = "2,3,4,5",
+		spawn_probability                 = "1,1,1,1", 
+		price = 300,
+		mana = 180, 
+		max_uses    = 5, 
+		custom_xml_file = "data/entities/misc/custom_cards/meteor_rain.xml",
+		action 		= function()
+			add_projectile("data/entities/projectiles/deck/meteor_rain.xml")
+			c.extra_entities = c.extra_entities .. "data/entities/misc/effect_meteor_rain.xml,"
+			c.fire_rate_wait = c.fire_rate_wait + 30
+		end,
+	},
+	{
+		id          = "MOLES_SOULS_EXPLOSION",
+		name 		= "Soul Detonation",
+		description = "Detonates a soul to produce an explosion.",
+		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_explosion.png",
+		related_projectiles	= {"mods/moles_souls/files/entities/projectiles/soul_detonation.xml"},
+		type 		= ACTION_TYPE_STATIC_PROJECTILE,
+		spawn_level                       = "2,3,4,5",
+		spawn_probability                 = "2,3,4,5", 
+		price = 120,
+		mana = 10,
+		--max_uses = 30,
+		custom_xml_file = "mods/moles_souls/files/entities/misc/soul_detonation.xml",
+		is_dangerous_blast = true,
+		action 		= function()
+			add_projectile("mods/moles_souls/files/entities/projectiles/soul_detonation.xml")
+			c.fire_rate_wait = c.fire_rate_wait + 10
+			c.screenshake = c.screenshake + 0.5
 		end,
 	},
 }

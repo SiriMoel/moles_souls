@@ -1,7 +1,7 @@
 dofile_once("data/scripts/lib/utilities.lua")
 dofile_once("data/scripts/lib/mod_settings.lua")
 
---THANKYOU HORSCHT
+--THANKS HORSCHT
 
 local mod_id = "moles_souls"
 mod_settings_version = 1
