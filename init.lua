@@ -49,9 +49,9 @@ function OnModSettingsChanged()
 	if ModSettingGet( "moles_souls.show_souls" ) == true then
 
 		local souls = dofile_once("mods/moles_souls/files/scripts/souls.lua")
-		local souls = EntityGetWithTag("soul")
+		local soul_entities = EntityGetWithTag("soul")
 
-		for i,soul_id in ipairs(souls) do
+		for i,soul_id in ipairs(soul_entities) do
 			EntityKill(soul_id)
 		end
 		
