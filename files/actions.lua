@@ -247,6 +247,30 @@ local to_insert = {
 			c.screenshake = c.screenshake + 0.5
 		end,
 	},
+	{
+		id					= "MOLES_SOULS_SHORUD",
+		name				= "Shroud",
+		description			= "Consumes a soul to protect you with a veil of ghostly energy.",
+		sprite				= "mods/moles_souls/files/ui_gfx/gun_actions/shroud.png",
+		type				= ACTION_TYPE_UTILITY,
+		spawn_level			= "2,3,4,5",
+		spawn_probability	= "1,1,1,",
+		price				= 200,
+		mana				= 100,
+		max_uses			= 10,
+		action				= function()
+			c.fire_rate_wait    = c.fire_rate_wait + 20
+			current_reload_time = current_reload_time + 20
+			
+			local entity_id = GetUpdatedEntityID()
+
+			if entity_id ~= nil and entity_id ~= 0 then
+				local px, py = EntityGetTransform( entity_id )
+				local effect_id = EntityLoad( "mods/moles_souls/files/entities/misc/status_entities/shroud.xml", px, py )
+				EntityAddChild( entity_id, effect_id )
+				end
+			end,
+	},
 }
 
 for k, v in ipairs(to_insert) do
