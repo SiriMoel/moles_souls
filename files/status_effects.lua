@@ -3,7 +3,7 @@ local to_insert = {
 		id="SHROUD",
 		ui_name="Shroud",
 		ui_description="You are spooky.",
-		ui_icon="mods/moles_souls/files/ui_gfx/status_indicators/shroud.png",
+		ui_icon="mods/moles_souls/files/ui_gfx/gun_actionss/shroud.png",
 		effect_entity="mods/moles_souls/files/entities/misc/effect_shroud.xml",
 	},
 }

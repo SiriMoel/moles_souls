@@ -20,7 +20,7 @@
 	<UIIconComponent
 		name="Shroud"
 		description="You are spooky."
-		icon_sprite_file="mods/moles_souls/files/ui_gfx/status_indicators/shroud.png"
+		icon_sprite_file="mods/moles_souls/files/ui_gfx/gun_actions/shroud.png"
 		is_perk="0"
 		display_above_head="1"
 		display_in_hud="1"

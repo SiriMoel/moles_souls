@@ -13,7 +13,8 @@ local soulTypes = {
     "spider",
     "synthetic",
     "zombie",
-    "worm"
+    "worm",
+    "fungi"
 }
 
 
