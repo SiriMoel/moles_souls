@@ -211,8 +211,8 @@ local to_insert = {
 		name 		= "Soul Lantern",
 		description = "Releases a portion of your souls in a burst of incredible power.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_lantern.png",
-		related_projectiles	= {"mods/moles_souls/files/entities/projectiles/reaping_halo.xml"},
-		related_extra_entities = { "data/entities/misc/effect_meteor_rain.xml" },
+		related_projectiles	= {"mods/moles_souls/files/entities/projectiles/soul_detonation.xml"},
+		--related_extra_entities = { "data/entities/misc/effect_meteor_rain.xml" },
 		never_unlimited		= true,
 		type 		= ACTION_TYPE_STATIC_PROJECTILE,
 		spawn_level                       = "2,3,4,5",
@@ -220,10 +220,10 @@ local to_insert = {
 		price = 300,
 		mana = 180, 
 		max_uses    = 5, 
-		custom_xml_file = "data/entities/misc/custom_cards/meteor_rain.xml",
+		--custom_xml_file = "data/entities/misc/custom_cards/meteor_rain.xml",
 		action 		= function()
-			add_projectile("data/entities/projectiles/deck/meteor_rain.xml")
-			c.extra_entities = c.extra_entities .. "data/entities/misc/effect_meteor_rain.xml,"
+			add_projectile("mods/moles_souls/files/entities/projectiles/lantern.xml")
+			--c.extra_entities = c.extra_entities .. "data/entities/misc/effect_meteor_rain.xml,"
 			c.fire_rate_wait = c.fire_rate_wait + 30
 		end,
 	},

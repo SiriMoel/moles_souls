@@ -8,7 +8,7 @@ local x, y = EntityGetTransform( entity_id )
 
 local soul_count = souls:count()
 
-local count = soul_count
+local count = soul_count * 0.3 + 1
 
 if count == 1 then
 	GamePrint(count .. " soul consumed!")
