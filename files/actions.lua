@@ -262,14 +262,7 @@ local to_insert = {
 			c.fire_rate_wait    = c.fire_rate_wait + 20
 			current_reload_time = current_reload_time + 20
 			
-			local entity_id = GetUpdatedEntityID()
-
-			if entity_id ~= nil and entity_id ~= 0 then
-				local px, py = EntityGetTransform( entity_id )
-				local effect_id = EntityLoad( "mods/moles_souls/files/entities/misc/status_entities/shroud.xml", px, py )
-				EntityAddChild( entity_id, effect_id )
-				end
-			end,
+		end,
 	},
 }
 
