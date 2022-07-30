@@ -24,4 +24,17 @@
     	fire_colors_index="1" >
         </Graphics>
     </CellDataChild>
+
+	<CellDataChild
+      	_parent="spark"
+      	_inherit_reactions="1"
+      	name="ritual_particles" 
+    	ui_name=""
+    	wang_color="7f94ffc7"
+    	>
+      	<Graphics
+    	color="f7FFFFFF"
+    	fire_colors_index="1" >
+        </Graphics>
+    </CellDataChild>
 </Materials>
