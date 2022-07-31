@@ -35,10 +35,10 @@ local to_insert = {
 		end,
 	},
 	{
-		id          = "MOLES_SOULS_SOUL_BATTERY",
-		name 		= "Soul Battery",
+		id          = "MOLES_SOULS_SOUL_LANTERN",
+		name 		= "Soul Lantern",
 		description = "Consumes all your souls to increase a projectile's damage.",
-		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_battery.png",
+		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_lantern.png",
 		related_extra_entities = { "mods/moles_souls/files/entities/misc/soul_battery.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,6,10",
@@ -207,9 +207,9 @@ local to_insert = {
 		end,
 	},]]--
 	{
-		id          = "MOLES_SOULS_LANTERN", -- WIP
-		name 		= "Soul Lantern",
-		description = "Releases a portion of your souls in a burst of incredible power.",
+		id          = "MOLES_SOULS_BATTERY", -- COMPLETELY REMAKE TO MAKE SPELLS CONSUME SOULS INSTEAD OF MANA
+		name 		= "Soul Battery",
+		description = "Makes your spells consume souls instead of mana.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_lantern.png",
 		related_projectiles	= {"mods/moles_souls/files/entities/projectiles/soul_detonation.xml"},
 		--related_extra_entities = { "data/entities/misc/effect_meteor_rain.xml" },
@@ -248,7 +248,7 @@ local to_insert = {
 		end,
 	},
 	{
-		id					= "MOLES_SOULS_SHORUD",
+		id					= "MOLES_SOULS_SHROUD",
 		name				= "Shroud",
 		description			= "Consumes a soul to protect you with a veil of ghostly energy.",
 		sprite				= "mods/moles_souls/files/ui_gfx/gun_actions/shroud.png",
