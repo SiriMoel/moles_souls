@@ -32,6 +32,8 @@ end
 
 GamePrint(soul)
 
+local particlecomp = EntityGetFirstComponent(entity_id, "ParticleEmitterComponent")
+
 --ORCS
 if soul == "orcs" or soul == "zombie" then
 --if EntityHasTag( soul, "soul_orcs" ) or EntityHasTag( soul, "soul_zombie" ) then
@@ -43,34 +45,14 @@ if soul == "orcs" or soul == "zombie" then
         lifetime="-1",
     } )
 
-    EntityAddComponent( entity_id, "ParticleEmitterComponent", {
-        _enabled="1",
-        emitted_material_name="spark_green",
-		x_pos_offset_min="0",
-		x_pos_offset_max="0",
-		y_pos_offset_min="0",
-		y_pos_offset_max="0",
-		x_vel_min="0",
-		x_vel_max="0",
-		y_vel_min="0",
-		y_vel_max="0",
-		count_min="20",
-		count_max="60",
-		lifetime_min="2.5",
-		lifetime_max="5.5",
-		is_trail="1",
-		trail_gap="1.0",
-		render_on_grid="1",
-		fade_based_on_lifetime="1",
-		airflow_force="0.1",
-		airflow_time="0.001",
-		airflow_scale="0.0833",
-		emission_interval_min_frames="1",
-		emission_interval_max_frames="1",
-		emit_cosmetic_particles="1",
-		create_real_particles="0",
-		is_emitting="1",
-    } )
+	edit_component( entity_id, "ParticleEmitterComponent", function(comp3,vars)		
+		ComponentSetValue2( particlecomp, "emitted_material_name", "spark_green" )
+	end)
+
+	--[[
+
+
+	]]
 
     expdamage = expdamage * 1.2
     exprad = exprad * 2
@@ -85,34 +67,9 @@ end
 if soul == "gilded" then
 --if EntityHasTag( soul, "soul_gilded" ) then
 
-    EntityAddComponent( entity_id, "ParticleEmitterComponent", {
-        _enabled="1",
-        emitted_material_name="gold",
-		x_pos_offset_min="0",
-		x_pos_offset_max="0",
-		y_pos_offset_min="0",
-		y_pos_offset_max="0",
-		x_vel_min="0",
-		x_vel_max="0",
-		y_vel_min="0",
-		y_vel_max="0",
-		count_min="60",
-		count_max="80",
-		lifetime_min="2.5",
-		lifetime_max="5.5",
-		is_trail="1",
-		trail_gap="1.0",
-		render_on_grid="1",
-		fade_based_on_lifetime="1",
-		airflow_force="0.1",
-		airflow_time="0.001",
-		airflow_scale="0.0833",
-		emission_interval_min_frames="1",
-		emission_interval_max_frames="1",
-		emit_cosmetic_particles="1",
-		create_real_particles="0",
-		is_emitting="1",
-    } )
+	edit_component( entity_id, "ParticleEmitterComponent", function(comp3,vars)		
+		ComponentSetValue2( particlecomp, "emitted_material_name", "gold" )
+	end)
     
 	EntityAddComponent( entity_id, "HitEffectComponent", { 
 		effect_hit="LOAD_UNIQUE_CHILD_ENTITY",
@@ -140,34 +97,9 @@ end
 if soul == "spider" then
 --if EntityHasTag( soul, "soul_spider" ) then
 	
-	EntityAddComponent( entity_id, "ParticleEmitterComponent", {
-        _enabled="1",
-        emitted_material_name="spark_purple",
-		x_pos_offset_min="0",
-		x_pos_offset_max="0",
-		y_pos_offset_min="0",
-		y_pos_offset_max="0",
-		x_vel_min="0",
-		x_vel_max="0",
-		y_vel_min="0",
-		y_vel_max="0",
-		count_min="20",
-		count_max="60",
-		lifetime_min="2.5",
-		lifetime_max="5.5",
-		is_trail="1",
-		trail_gap="1.0",
-		render_on_grid="1",
-		fade_based_on_lifetime="1",
-		airflow_force="0.1",
-		airflow_time="0.001",
-		airflow_scale="0.0833",
-		emission_interval_min_frames="1",
-		emission_interval_max_frames="1",
-		emit_cosmetic_particles="1",
-		create_real_particles="0",
-		is_emitting="1",
-    } )
+	edit_component( entity_id, "ParticleEmitterComponent", function(comp3,vars)		
+		ComponentSetValue2( particlecomp, "emitted_material_name", "spark_purple" )
+	end)
 
 	EntityAddComponent( entity_id, "HitEffectComponent", { 
 		effect_hit="LOAD_UNIQUE_CHILD_ENTITY",
@@ -188,34 +120,9 @@ end
 if soul == "mage" then
 --if EntityHasTag( soul, "soul_mage" ) then
 
-    EntityAddComponent( entity_id, "ParticleEmitterComponent", {
-        _enabled="1",
-        emitted_material_name="spark_blue",
-		x_pos_offset_min="0",
-		x_pos_offset_max="0",
-		y_pos_offset_min="0",
-		y_pos_offset_max="0",
-		x_vel_min="0",
-		x_vel_max="0",
-		y_vel_min="0",
-		y_vel_max="0",
-		count_min="20",
-		count_max="60",
-		lifetime_min="2.5",
-		lifetime_max="5.5",
-		is_trail="1",
-		trail_gap="1.0",
-		render_on_grid="1",
-		fade_based_on_lifetime="1",
-		airflow_force="0.1",
-		airflow_time="0.001",
-		airflow_scale="0.0833",
-		emission_interval_min_frames="1",
-		emission_interval_max_frames="1",
-		emit_cosmetic_particles="1",
-		create_real_particles="0",
-		is_emitting="1",
-    } )
+	edit_component( entity_id, "ParticleEmitterComponent", function(comp3,vars)		
+		ComponentSetValue2( particlecomp, "emitted_material_name", "spark_blue" )
+	end)
 
     EntityAddComponent( entity_id, "LuaComponent", {
 		script_source_file="mods/moles_souls/files/scripts/projectiles/soul_blast_homing_area.lua",
@@ -233,34 +140,9 @@ end
 if soul == "slimes" then
 --if EntityHasTag( soul, "soul_slimes" ) then
 	
-	EntityAddComponent( entity_id, "ParticleEmitterComponent", {
-        _enabled="1",
-        emitted_material_name="spark_green_bright",
-		x_pos_offset_min="0",
-		x_pos_offset_max="0",
-		y_pos_offset_min="0",
-		y_pos_offset_max="0",
-		x_vel_min="0",
-		x_vel_max="0",
-		y_vel_min="0",
-		y_vel_max="0",
-		count_min="20",
-		count_max="60",
-		lifetime_min="2.5",
-		lifetime_max="5.5",
-		is_trail="1",
-		trail_gap="1.0",
-		render_on_grid="1",
-		fade_based_on_lifetime="1",
-		airflow_force="0.1",
-		airflow_time="0.001",
-		airflow_scale="0.0833",
-		emission_interval_min_frames="1",
-		emission_interval_max_frames="1",
-		emit_cosmetic_particles="1",
-		create_real_particles="0",
-		is_emitting="1",
-    } )
+	edit_component( entity_id, "ParticleEmitterComponent", function(comp3,vars)		
+		ComponentSetValue2( particlecomp, "emitted_material_name", "spark_green_bright" )
+	end)
 
 	EntityAddComponent( entity_id, "HitEffectComponent", { 
 		effect_hit="LOAD_UNIQUE_CHILD_ENTITY",
@@ -278,34 +160,9 @@ end
 if soul == "fly" then
 --if EntityHasTag( soul, "soul_fly" ) then
 
-	EntityAddComponent( entity_id, "ParticleEmitterComponent", {
-        _enabled="1",
-        emitted_material_name="spark_red",
-		x_pos_offset_min="0",
-		x_pos_offset_max="0",
-		y_pos_offset_min="0",
-		y_pos_offset_max="0",
-		x_vel_min="0",
-		x_vel_max="0",
-		y_vel_min="0",
-		y_vel_max="0",
-		count_min="20",
-		count_max="60",
-		lifetime_min="2.5",
-		lifetime_max="5.5",
-		is_trail="1",
-		trail_gap="1.0",
-		render_on_grid="1",
-		fade_based_on_lifetime="1",
-		airflow_force="0.1",
-		airflow_time="0.001",
-		airflow_scale="0.0833",
-		emission_interval_min_frames="1",
-		emission_interval_max_frames="1",
-		emit_cosmetic_particles="1",
-		create_real_particles="0",
-		is_emitting="1",
-    } )	
+	edit_component( entity_id, "ParticleEmitterComponent", function(comp3,vars)		
+		ComponentSetValue2( particlecomp, "emitted_material_name", "spark_red" )
+	end)
 
 	EntityAddComponent( entity_id, "LuaComponent", {
 		script_source_file="data/scripts/projectiles/chaotic_arc.lua",
@@ -328,34 +185,9 @@ end
 if soul == "bat" then
 --if EntityHasTag( soul, "soul_bat" ) then
 
-	EntityAddComponent( entity_id, "ParticleEmitterComponent", {
-        _enabled="1",
-        emitted_material_name="spark_purple_bright",
-		x_pos_offset_min="0",
-		x_pos_offset_max="0",
-		y_pos_offset_min="0",
-		y_pos_offset_max="0",
-		x_vel_min="0",
-		x_vel_max="0",
-		y_vel_min="0",
-		y_vel_max="0",
-		count_min="20",
-		count_max="60",
-		lifetime_min="2.5",
-		lifetime_max="5.5",
-		is_trail="1",
-		trail_gap="1.0",
-		render_on_grid="1",
-		fade_based_on_lifetime="1",
-		airflow_force="0.1",
-		airflow_time="0.001",
-		airflow_scale="0.0833",
-		emission_interval_min_frames="1",
-		emission_interval_max_frames="1",
-		emit_cosmetic_particles="1",
-		create_real_particles="0",
-		is_emitting="1",
-    } )	
+	edit_component( entity_id, "ParticleEmitterComponent", function(comp3,vars)		
+		ComponentSetValue2( particlecomp, "emitted_material_name", "spark_purple_bright" )
+	end)
 
 	EntityAddComponent( entity_id, "HomingComponent", {
 		homing_targeting_coeff="130.0",
