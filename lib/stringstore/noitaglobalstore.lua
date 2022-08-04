@@ -3,22 +3,18 @@ noitaGlobalStore = function(base_name)
 
 	return {
 		set_type = function(key, val)
-			print("set_type " .. base_name .. "." .. key .. ".type" .. " " .. val)
 			GlobalsSetValue(base_name .. "." .. key .. ".type", val)
 		end,
 
 		set = function(key, val)
-			print("set " .. base_name .. "." .. key .. " " .. val)
 			GlobalsSetValue(base_name .. "." .. key, val)
 		end,
 
 		get_type = function(key)
-			print("get_type " .. base_name .. "." .. key .. ".type")
 			return GlobalsGetValue(base_name .. "." .. key .. ".type")
 		end,
 
 		get = function(key)
-			print("get " .. base_name .. "." .. key)
 			return GlobalsGetValue(base_name .. "." .. key)
 		end,
 

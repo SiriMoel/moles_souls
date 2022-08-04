@@ -207,24 +207,22 @@ local to_insert = {
 		end,
 	},]]--
 	{
-		id          = "MOLES_SOULS_BATTERY", -- COMPLETELY REMAKE TO MAKE SPELLS CONSUME SOULS INSTEAD OF MANA
+		id          = "MOLES_SOULS_BATTERY",
 		name 		= "Soul Battery",
 		description = "Makes your spells consume souls instead of mana.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_lantern.png",
-		related_projectiles	= {"mods/moles_souls/files/entities/projectiles/soul_detonation.xml"},
-		--related_extra_entities = { "data/entities/misc/effect_meteor_rain.xml" },
-		never_unlimited		= true,
-		type 		= ACTION_TYPE_STATIC_PROJECTILE,
+		type 		= ACTION_TYPE_PASSIVE,
 		spawn_level                       = "2,3,4,5",
 		spawn_probability                 = "1,1,1,1", 
 		price = 300,
-		mana = 180, 
-		max_uses    = 5, 
-		--custom_xml_file = "data/entities/misc/custom_cards/meteor_rain.xml",
+		mana = 0, 
 		action 		= function()
-			add_projectile("mods/moles_souls/files/entities/projectiles/lantern.xml")
-			--c.extra_entities = c.extra_entities .. "data/entities/misc/effect_meteor_rain.xml,"
-			c.fire_rate_wait = c.fire_rate_wait + 30
+            local entity_id = GetUpdatedEntityID()
+            if entity_id ~= nil and entity_id ~= 0 then
+                local px, py = EntityGetTransform(entity_id)
+                local effect_id = EntityLoad("mods/moles_souls/files/entities/misc/status_entities/souls_as_mana.xml", px, py)
+                EntityAddChild(entity_id, effect_id)
+            end
 		end,
 	},
 	{
