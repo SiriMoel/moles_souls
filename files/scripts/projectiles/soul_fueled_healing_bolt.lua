@@ -10,7 +10,9 @@ local soul_count = souls:count()
 
 local count = soul_count * 0.3 + 1
 
-if soul_count == 0 then return end
+if soul_count == 0 then 
+	EntityKill(entity_id)
+end
 
 if soul_count == 1 then
 	GamePrint(count .. " soul consumed!")

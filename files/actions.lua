@@ -126,7 +126,7 @@ local to_insert = {
 		type 		= ACTION_TYPE_PROJECTILE,
 		spawn_level                       = "2,3,4,5", 
 		spawn_probability                 = "1,1,1,1", 
-		price = 170,
+		price = 200,
 		mana = 60,
 		max_uses = 10,
 		action 		= function()
@@ -210,21 +210,33 @@ local to_insert = {
 		id          = "MOLES_SOULS_BATTERY", -- COMPLETELY REMAKE TO MAKE SPELLS CONSUME SOULS INSTEAD OF MANA
 		name 		= "Soul Battery",
 		description = "Makes your spells consume souls instead of mana.",
-		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_lantern.png",
-		related_projectiles	= {"mods/moles_souls/files/entities/projectiles/soul_detonation.xml"},
-		--related_extra_entities = { "data/entities/misc/effect_meteor_rain.xml" },
-		never_unlimited		= true,
-		type 		= ACTION_TYPE_STATIC_PROJECTILE,
+		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_battery.png",
+		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "2,3,4,5",
 		spawn_probability                 = "1,1,1,1", 
 		price = 300,
-		mana = 180, 
-		max_uses    = 5, 
-		--custom_xml_file = "data/entities/misc/custom_cards/meteor_rain.xml",
+		mana = 0, 
+		max_uses    = 10, 
 		action 		= function()
-			add_projectile("mods/moles_souls/files/entities/projectiles/lantern.xml")
-			--c.extra_entities = c.extra_entities .. "data/entities/misc/effect_meteor_rain.xml,"
-			c.fire_rate_wait = c.fire_rate_wait + 30
+			c.fire_rate_wait = c.fire_rate_wait + 10
+
+			if action.mana ~= nil then
+				local souls = dofile("mods/moles_souls/files/scripts/souls.lua")
+				local souls_required = math.ceil(action.mana / 100) -- number is how much mana per soul
+
+				local soul_count = souls:count()
+
+				if soul_count > souls_required then
+					action.mana = action.mana * -1
+					
+					GamePrint("Consumed" .. souls_required .. " souls!")
+					souls:remove(souls_required)
+				else
+					GamePrint("You do not have enough souls.")
+				end
+			else
+				GamePrint("action.mana was nil?") -- REMOVE LATER
+			end
 		end,
 	},
 	{
@@ -254,7 +266,7 @@ local to_insert = {
 		sprite				= "mods/moles_souls/files/ui_gfx/gun_actions/shroud.png",
 		type				= ACTION_TYPE_UTILITY,
 		spawn_level			= "2,3,4,5",
-		spawn_probability	= "1,1,1,",
+		spawn_probability	= "1,1,1,1",
 		price				= 200,
 		mana				= 100,
 		max_uses			= 10,
@@ -262,6 +274,22 @@ local to_insert = {
 			c.fire_rate_wait    = c.fire_rate_wait + 20
 			current_reload_time = current_reload_time + 20
 			
+		end,
+	},
+	{
+		id          = "MOLES_SOULS_SOUL_SLICE",
+		name 		= "Soul Slice",
+		description = "Converts a soul into a powerful blade.",
+		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_halo.png",
+		related_projectiles	= {"mods/moles_souls/files/entities/projectiles/soul_slice.xml"},
+		type 		= ACTION_TYPE_PROJECTILE,
+		spawn_level                       = "2,3,4,5", 
+		spawn_probability                 = "1,1,1,1", 
+		price = 200,
+		mana = 60,
+		action 		= function()
+			add_projectile("mods/moles_souls/files/entities/projectiles/soul_slice.xml")
+			c.fire_rate_wait = c.fire_rate_wait + 10
 		end,
 	},
 }

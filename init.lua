@@ -1,5 +1,6 @@
 ModLuaFileAppend( "data/scripts/gun/gun_actions.lua", "mods/moles_souls/files/actions.lua" )
 ModLuaFileAppend( "data/scripts/status_effects/status_list.lua", "mods/moles_souls/files/status_effects.lua" )
+ModLuaFileAppend( "data/scripts/perks/perk_list.lua", "mods/moles_souls/files/perk_list.lua" )
 ModMaterialsFileAdd("mods/moles_souls/files/materials.xml")
 
 local nxml = dofile_once("mods/moles_souls/lib/nxml.lua")
