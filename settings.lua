@@ -22,10 +22,17 @@ local settings = {
     {
         id = "show_souls",
         label = "Show Souls",
-        description = "This is for if you want to see souls around your player in game.",
+        description = "If you want to see souls around your player in game.",
         value_default = true,
         scope = MOD_SETTING_SCOPE_RUNTIME,
-    }
+    },
+	{
+		id = "say_soul",
+        label = "Say acquired soul",
+        description = "If you want to be told what souls you acquire.",
+        value_default = true,
+        scope = MOD_SETTING_SCOPE_RUNTIME,
+	},
 }
 
 function ModSettingsGuiCount()

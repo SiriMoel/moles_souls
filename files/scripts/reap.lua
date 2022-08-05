@@ -4,6 +4,10 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
     local entity_id = GetUpdatedEntityID()
     local herd_id_number = ComponentGetValue2( EntityGetFirstComponent( entity_id, "GenomeDataComponent" ), "herd_id")
     local herd_id = HerdIdToString(herd_id_number)
-    GamePrint(herd_id)
+
+    if ModSettingGet( "moles_souls.say_soul" ) == true then
+        GamePrint( "You have acquired a " .. herd_id .. " soul!")
+    end
+
     souls:add(herd_id)
 end
