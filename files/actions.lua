@@ -249,7 +249,7 @@ local to_insert = {
 		id					= "MOLES_SOULS_SHROUD",
 		name				= "Shroud",
 		description			= "Consumes a soul to protect you with a veil of ghostly energy.",
-		sprite				= "mods/moles_souls/files/ui_gfx/gun_actions/shroud.png",
+		sprite				= "mods/moles_souls/files/ui_gfx/actions/shroud.png",
 		type				= ACTION_TYPE_UTILITY,
 		spawn_level			= "2,3,4,5",
 		spawn_probability	= "1,1,1,1",
@@ -259,7 +259,7 @@ local to_insert = {
 		action				= function()
 			c.fire_rate_wait    = c.fire_rate_wait + 20
 			current_reload_time = current_reload_time + 20
-			
+			dofile_once("mods/moles_souls/files/scripts/projectiles/shroud.lua")
 		end,
 	},
 	{

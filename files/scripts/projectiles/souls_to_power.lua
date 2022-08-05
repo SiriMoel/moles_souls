@@ -8,7 +8,9 @@ local x, y = EntityGetTransform( entity_id )
 
 local soul_count = souls:count()
 
-local count = soul_count * 0.3 + 1
+local count = math.ceil(soul_count * 0.3) + 1
+
+if soul_count == 0 then return end
 
 if count == 1 then
 	GamePrint(count .. " soul consumed!")
@@ -41,4 +43,4 @@ edit_component( effect_id, "ParticleEmitterComponent", function(comp3,vars)
 	ComponentSetValue2( comp3, "count_max", part_max )
 end)
 
-souls:remove("any", math.ceil(soul_count))
+souls:remove(count)

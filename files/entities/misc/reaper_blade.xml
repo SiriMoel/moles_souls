@@ -21,7 +21,7 @@
 	</InheritTransformComponent>
 
     <LuaComponent
-		script_source_file="mods/moles_souls/files/scripts/projectiles/soul_battery.lua"
+		script_source_file="mods/moles_souls/files/scripts/projectiles/reaper_blade.lua"
 		execute_every_n_frame="1"
 		>
 	</LuaComponent>
@@ -33,7 +33,7 @@
 		aabb_min.y="-12" 
 		aabb_max.x="12" 
 		aabb_max.y="12" 
-		damage_per_frame="0.2"
+		damage_per_frame="0.1"
 		update_every_n_frame="1"
 		entities_with_tag="enemy"
 		damage_type="DAMAGE_SLICE"

@@ -21,9 +21,9 @@
     damage="0"
     on_collision_die="1"
 	shoot_light_flash_radius="15"
-	shoot_light_flash_r="10"
-    shoot_light_flash_g="255"
-    shoot_light_flash_b="255"
+	shoot_light_flash_r="63"
+    shoot_light_flash_g="226"
+    shoot_light_flash_b="223"
     lifetime="10" >
     <config_explosion
       never_cache="1" 

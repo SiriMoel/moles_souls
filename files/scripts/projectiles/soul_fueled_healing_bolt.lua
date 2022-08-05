@@ -8,7 +8,7 @@ local x, y = EntityGetTransform( entity_id )
 
 local soul_count = souls:count()
 
-local count = soul_count * 0.3 + 1
+local count = math.ceil(soul_count * 0.3) + 1
 
 if soul_count == 0 then 
 	EntityKill(entity_id)
@@ -31,4 +31,4 @@ healing = healing + count * -0.3
 
 ComponentObjectSetValue( comp, "damage_by_type", "healing", healing )
 
-souls:remove("any", math.ceil(soul_count))
+souls:remove(count)

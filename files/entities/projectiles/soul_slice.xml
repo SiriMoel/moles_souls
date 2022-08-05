@@ -45,13 +45,15 @@
         >
             <damage_by_type 
                 melee="0.2"
+                curse="0.0"
+                ice="0.0"
             ></damage_by_type>>
     </ProjectileComponent>
 
     <SpriteComponent
         _enabled="1"
         alpha="1"
-        image_file="mods/moles_souls/files/projectiles_gfx/soul_slice.xml"
+        image_file="mods/moles_souls/files/projectiles_gfx/soul_slice/default.xml"
         next_rect_animation=""
         rect_animation=""
     ></SpriteComponent>
@@ -60,6 +62,13 @@
       file="data/audio/Desktop/projectiles.bank"
       event_root="player_projectiles/bullet_arrow">
   </AudioComponent>
+
+    <LuaComponent
+		script_source_file="mods/moles_souls/files/scripts/projectiles/soul_slice.lua"
+		execute_every_n_frame="1"
+		remove_after_executed="1"
+		>
+	</LuaComponent>
 
     <VariableStorageComponent
         name="projectile_file"
