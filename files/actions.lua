@@ -207,36 +207,22 @@ local to_insert = {
 		end,
 	},]]--
 	{
-		id          = "MOLES_SOULS_BATTERY", -- COMPLETELY REMAKE TO MAKE SPELLS CONSUME SOULS INSTEAD OF MANA
+		id          = "MOLES_SOULS_BATTERY",
 		name 		= "Soul Battery",
 		description = "Makes your spells consume souls instead of mana.",
-		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_battery.png",
-		type 		= ACTION_TYPE_MODIFIER,
+		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_lantern.png",
+		type 		= ACTION_TYPE_PASSIVE,
 		spawn_level                       = "2,3,4,5",
 		spawn_probability                 = "1,1,1,1", 
 		price = 300,
 		mana = 0, 
-		max_uses    = 10, 
 		action 		= function()
-			c.fire_rate_wait = c.fire_rate_wait + 10
-
-			if action.mana ~= nil then
-				local souls = dofile("mods/moles_souls/files/scripts/souls.lua")
-				local souls_required = math.ceil(action.mana / 100) -- number is how much mana per soul
-
-				local soul_count = souls:count()
-
-				if soul_count > souls_required then
-					action.mana = action.mana * -1
-					
-					GamePrint("Consumed" .. souls_required .. " souls!")
-					souls:remove(souls_required)
-				else
-					GamePrint("You do not have enough souls.")
-				end
-			else
-				GamePrint("action.mana was nil?") -- REMOVE LATER
-			end
+            local entity_id = GetUpdatedEntityID()
+            if entity_id ~= nil and entity_id ~= 0 then
+                local px, py = EntityGetTransform(entity_id)
+                local effect_id = EntityLoad("mods/moles_souls/files/entities/misc/status_entities/souls_as_mana.xml", px, py)
+                EntityAddChild(entity_id, effect_id)
+            end
 		end,
 	},
 	{

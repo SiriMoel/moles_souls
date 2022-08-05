@@ -1,0 +1,3 @@
+<Entity>
+    <ShotEffectComponent extra_modifier="moles_souls_souls_as_mana"></ShotEffectComponent>
+</Entity>
