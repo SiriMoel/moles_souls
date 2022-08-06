@@ -246,23 +246,6 @@ local to_insert = {
 		end,
 	},
 	{
-		id					= "MOLES_SOULS_SHROUD",
-		name				= "Shroud",
-		description			= "Consumes a soul to protect you with a veil of ghostly energy.",
-		sprite				= "mods/moles_souls/files/ui_gfx/actions/shroud.png",
-		type				= ACTION_TYPE_UTILITY,
-		spawn_level			= "2,3,4,5",
-		spawn_probability	= "1,1,1,1",
-		price				= 200,
-		mana				= 100,
-		max_uses			= 10,
-		action				= function()
-			c.fire_rate_wait    = c.fire_rate_wait + 20
-			current_reload_time = current_reload_time + 20
-			dofile_once("mods/moles_souls/files/scripts/projectiles/shroud.lua")
-		end,
-	},
-	{
 		id          = "MOLES_SOULS_SOUL_SLICE",
 		name 		= "Soul Slice",
 		description = "Converts a soul into a powerful blade.",
@@ -278,6 +261,22 @@ local to_insert = {
 			c.fire_rate_wait = c.fire_rate_wait + 10
 		end,
 	},
+	--[[{
+		id					= "MOLES_SOULS_SHROUD",
+		name				= "Shroud",
+		description			= "Consumes a soul to protect you with a veil of ghostly energy.",
+		sprite				= "mods/moles_souls/files/ui_gfx/actions/shroud.png",
+		type				= ACTION_TYPE_UTILITY,
+		spawn_level			= "2,3,4,5",
+		spawn_probability	= "1,1,1,1",
+		price				= 200,
+		mana				= 100,
+		max_uses			= 10,
+		action				= function()
+			c.fire_rate_wait    = c.fire_rate_wait + 20
+			dofile_once("mods/moles_souls/files/scripts/projectiles/shroud.lua")
+		end,
+	},]]--
 }
 
 for k, v in ipairs(to_insert) do

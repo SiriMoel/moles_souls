@@ -44,7 +44,7 @@
         damage_every_x_frames="10"
         >
             <damage_by_type 
-                melee="100"
+                slice="0.0"
                 curse="0.0"
                 ice="0.0"
             ></damage_by_type>>
@@ -58,10 +58,10 @@
         rect_animation=""
     ></SpriteComponent>
 
-    <!--<AudioComponent
+  <AudioComponent
       file="data/audio/Desktop/projectiles.bank"
-      event_root="player_projectiles/bullet_arrow">
-  </AudioComponent>-->
+      event_root="projectiles/rocket">
+  </AudioComponent>
 
     <LuaComponent
 		script_source_file="mods/moles_souls/files/scripts/projectiles/soul_slice.lua"
@@ -70,11 +70,11 @@
 		>
 	</LuaComponent>
 
-    <GameAreaEffectComponent
-        radius="16"
+    <!--<GameAreaEffectComponent
+        radius="32"
         collide_with_tag="hittable"
         frame_length="1"
-    ></GameAreaEffectComponent>
+    ></GameAreaEffectComponent>-->
 
     <VariableStorageComponent
         name="projectile_file"
