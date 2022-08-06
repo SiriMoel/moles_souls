@@ -15,7 +15,7 @@
         lob_min="0.8"
         lob_max="1.0"
         speed_min="0"
-        speed_max="300"
+        speed_max="10"
         friction="1.0"
         direction_random_rad="0"
         on_death_explode="0"
@@ -24,7 +24,7 @@
         ground_collision_fx="1"
         explosion_dont_damage_shooter="1"
         on_collision_die="0"
-        lifetime="30"
+        lifetime="10"
         damage="0.0"
         lifetime_randomness="0"
         velocity_sets_y_flip="1"
@@ -44,7 +44,7 @@
         damage_every_x_frames="10"
         >
             <damage_by_type 
-                melee="0.2"
+                melee="100"
                 curse="0.0"
                 ice="0.0"
             ></damage_by_type>>
@@ -58,10 +58,10 @@
         rect_animation=""
     ></SpriteComponent>
 
-    <AudioComponent
+    <!--<AudioComponent
       file="data/audio/Desktop/projectiles.bank"
       event_root="player_projectiles/bullet_arrow">
-  </AudioComponent>
+  </AudioComponent>-->
 
     <LuaComponent
 		script_source_file="mods/moles_souls/files/scripts/projectiles/soul_slice.lua"
@@ -69,6 +69,12 @@
 		remove_after_executed="1"
 		>
 	</LuaComponent>
+
+    <GameAreaEffectComponent
+        radius="16"
+        collide_with_tag="hittable"
+        frame_length="1"
+    ></GameAreaEffectComponent>
 
     <VariableStorageComponent
         name="projectile_file"

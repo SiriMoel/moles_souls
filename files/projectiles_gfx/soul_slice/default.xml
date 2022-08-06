@@ -1,5 +1,5 @@
 <Sprite
-    filename="mods/moles_soulss/files/projectiles_gfx/soul_slice/default.png"
+    filename="mods/moles_souls/files/projectiles_gfx/soul_slice/default.png"
     offset_x="23.5"
     offset_y="13"
     default_animation="fireball"
@@ -11,8 +11,8 @@
         pos_x="0"
         pos_y="0"
         frame_count="4"
-        frame_width="70"
-        frame_height="80"
+        frame_width="88"
+        frame_height="52"
         frame_wait="0.04"
         frames_per_row="4"
         loop="1">
