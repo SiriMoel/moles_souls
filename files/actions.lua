@@ -137,7 +137,7 @@ local to_insert = {
 	{
 		id          = "MOLES_SOULS_GOLD_TO_SOULS",
 		name 		= "Gold to Souls",
-		description = "Converts an amount of gold into a soul.",
+		description = "Creates a soul using a sum of gold.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/gold_to_souls.png",
 		related_projectiles	= {"mods/moles_souls/files/entities/misc/gold_to_souls.xml"},
 		never_unlimited = true,
@@ -155,7 +155,7 @@ local to_insert = {
 	{
 		id          = "MOLES_SOULS_SOUL_HALO",
 		name 		= "Reaping Halo",
-		description = "Fires a halo of soul energy that causes enemies to drop their souls.",
+		description = "Summons a halo of soul energy that homes and causes enemies to drop their souls.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_halo.png",
 		related_projectiles	= {"mods/moles_souls/files/entities/projectiles/reaping_halo.xml"},
 		type 		= ACTION_TYPE_PROJECTILE,
