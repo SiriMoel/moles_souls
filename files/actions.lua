@@ -149,7 +149,7 @@ local to_insert = {
 		max_uses = 3,
 		custom_xml_file = "mods/moles_souls/files/entities/misc/gold_to_souls.xml",
 		action 		= function()
-			dofile("mods/moles_souls/files/scripts/projectiles/gold_to_souls.lua")
+			--dofile("mods/moles_souls/files/scripts/projectiles/gold_to_souls.lua")
 		end,
 	},
 	{
@@ -277,6 +277,23 @@ local to_insert = {
 			dofile_once("mods/moles_souls/files/scripts/projectiles/shroud.lua")
 		end,
 	},]]--
+	{
+		id          = "MOLES_SOULS_SUMMON_SOUL",
+		name 		= "Summon Soul",
+		description = "Converts a soul into the animal it came from.",
+		sprite 		= "mods/moles_souls/files/ui_gfx/actions/summon_soul.png",
+		related_projectiles	= {"mods/moles_souls/files/entities/misc/summon_soul.xml"},
+		type 		= ACTION_TYPE_UTILITY,
+		spawn_level                       = "1,2,3,4,5",
+		spawn_probability                 = "1,1,1,1,1",
+		price = 200,
+		mana = 30,
+		max_uses = 3,
+		custom_xml_file = "mods/moles_souls/files/entities/misc/summon_soul.xml",
+		action 		= function()
+			--dofile("mods/moles_souls/files/scripts/projectiles/summon_soul.lua")
+		end,
+	},
 }
 
 for k, v in ipairs(to_insert) do
