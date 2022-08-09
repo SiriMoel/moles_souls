@@ -137,7 +137,7 @@ local to_insert = {
 	{
 		id          = "MOLES_SOULS_GOLD_TO_SOULS",
 		name 		= "Gold to Souls",
-		description = "Converts an amount of gold into a soul.",
+		description = "Creates a soul using a sum of gold.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/gold_to_souls.png",
 		related_projectiles	= {"mods/moles_souls/files/entities/misc/gold_to_souls.xml"},
 		never_unlimited = true,
@@ -149,13 +149,13 @@ local to_insert = {
 		max_uses = 3,
 		custom_xml_file = "mods/moles_souls/files/entities/misc/gold_to_souls.xml",
 		action 		= function()
-			dofile("mods/moles_souls/files/scripts/projectiles/gold_to_souls.lua")
+			--dofile("mods/moles_souls/files/scripts/projectiles/gold_to_souls.lua")
 		end,
 	},
 	{
 		id          = "MOLES_SOULS_SOUL_HALO",
 		name 		= "Reaping Halo",
-		description = "Fires a halo of soul energy that causes enemies to drop their souls.",
+		description = "Summons a halo of soul energy that homes and causes enemies to drop their souls.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_halo.png",
 		related_projectiles	= {"mods/moles_souls/files/entities/projectiles/reaping_halo.xml"},
 		type 		= ACTION_TYPE_PROJECTILE,
@@ -249,7 +249,7 @@ local to_insert = {
 		id          = "MOLES_SOULS_SOUL_SLICE",
 		name 		= "Soul Slice",
 		description = "Converts a soul into a powerful blade.",
-		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_halo.png",
+		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_slice.png",
 		related_projectiles	= {"mods/moles_souls/files/entities/projectiles/soul_slice.xml"},
 		type 		= ACTION_TYPE_PROJECTILE,
 		spawn_level                       = "2,3,4,5", 
@@ -277,6 +277,23 @@ local to_insert = {
 			dofile_once("mods/moles_souls/files/scripts/projectiles/shroud.lua")
 		end,
 	},]]--
+	{
+		id          = "MOLES_SOULS_SUMMON_SOUL",
+		name 		= "Summon Soul",
+		description = "Converts a soul into the animal it came from.",
+		sprite 		= "mods/moles_souls/files/ui_gfx/actions/summon_soul.png",
+		related_projectiles	= {"mods/moles_souls/files/entities/misc/summon_soul.xml"},
+		type 		= ACTION_TYPE_UTILITY,
+		spawn_level                       = "1,2,3,4,5",
+		spawn_probability                 = "1,1,1,1,1",
+		price = 200,
+		mana = 30,
+		max_uses = 3,
+		custom_xml_file = "mods/moles_souls/files/entities/misc/summon_soul.xml",
+		action 		= function()
+			--dofile("mods/moles_souls/files/scripts/projectiles/summon_soul.lua")
+		end,
+	},
 }
 
 for k, v in ipairs(to_insert) do

@@ -4,7 +4,7 @@ local entity_id = GetUpdatedEntityID()
 local root_id = EntityGetRootEntity( entity_id )
 local x, y = EntityGetTransform( entity_id )
 
-local mark_radius = 30
+local mark_radius = 56
 
 local targets = EntityGetInRadiusWithTag( x, y, mark_radius, "homing_target" )
 
