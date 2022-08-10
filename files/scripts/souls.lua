@@ -17,7 +17,6 @@ local soulTypes = {
     "fungi"
 }
 
-
 function tableSearch(t, x)
     for i, v in ipairs(t) do
         if v == x then

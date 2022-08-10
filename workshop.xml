@@ -1,14 +1,12 @@
 <Mod
 name="Mole's Souls"
 description="
-Adds a souls mechanic to Noita, inspired by Minecraft Dungeons.
-
-To get souls, you need to kill enemies with a reaping spell added by this mod.
-
-THIS IS VERY WIP DESC OK
+This mod contains a new mechanic for Noita about gathering souls from enemies to use for your own endeavours and spells.
+To obtain souls you need to kill enemies with a reaping spell, and you will obtain one of the [b]12[/b] soul types.
+These can be used on your spells each granting different effects when used on spells like Soul Blast.
 
 special thank
-Gustavo, Horscht (for settings code), Copi (thing), Calamari,
+Gustavo, Horscht (for settings code), Copi (thing), Calamari
 
 "
 tags="gameplay,spells"

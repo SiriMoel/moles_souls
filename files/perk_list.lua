@@ -11,6 +11,19 @@ local to_insert = {
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			add_halo_level(entity_who_picked, 1)
 		end,
+	},
+	{
+		id = "MOLES_SOULS_SOUL_SCALING",
+		ui_name = "$perk_moles_souls_soul_scaling",
+		ui_description = "$perkdesc_moles_souls_soul_scaling",
+		ui_icon = "data/ui_gfx/perk_icons/saving_grace.png",
+		perk_icon = "data/items_gfx/perks/saving_grace.png",
+		game_effect = "SAVING_GRACE",
+		stackable = STACKABLE_NO,
+		usable_by_enemies = true,
+		func = function( entity_perk_item, entity_who_picked, item_name )
+			add_halo_level(entity_who_picked, 1)
+		end,
 	},]]--
 }
 
