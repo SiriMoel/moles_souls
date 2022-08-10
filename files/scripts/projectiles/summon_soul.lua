@@ -2,8 +2,11 @@ dofile("mods/moles_souls/files/utils.lua")
 local souls = dofile("mods/moles_souls/files/scripts/souls.lua")
 
 local player = EntityGetWithTag("player_unit")[1]
+local entity = GetUpdatedEntityID()
 
 local soul = souls:get(1)
+
+local x, y = EntityGetTransform(entity)
 
 local e = {
     {
@@ -45,7 +48,7 @@ end
 local r = f(soul)
 
 if r ~= nil then
-    EntityLoad(r["path"])
+    EntityLoad(r["path"], x, y)
     souls:remove(soul)
 else
     GamePrint("Issue.")

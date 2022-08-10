@@ -1,11 +1,11 @@
---- soul music ---
+--- the quest --- 
+called soul bounty
 
-E
-G
-A
-B
-D
+grandmaster's apprentice has found a way to use dread souls 
+(name tbd, basically a different kind of soul with more "chaotic" effects)
 
-how activate box?
-how get box?
-should box be the instrument?
+u get a spell which lets u reap dread souls
+if u bring a specific dread soul to a thing (most dread souls will probably be the 1 type tho idk)
+u go to next part of quest ?
+
+end boss can only be damaged by dread-soul powered spells (not sure how i can make that but thats ok)

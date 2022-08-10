@@ -14,7 +14,8 @@ local soulTypes = {
     "synthetic",
     "zombie",
     "worm",
-    "fungi"
+    "fungi",
+    "dread"
 }
 
 function tableSearch(t, x)

@@ -1,12 +1,12 @@
 <Entity>
 	<Base file="data/entities/base_custom_card.xml" > 
 		<SpriteComponent 
-			image_file="mods/moles_souls/files/ui_gfx/actions/gold_to_souls.png" >
+			image_file="mods/moles_souls/files/ui_gfx/actions/summon_soul.png" >
 		</SpriteComponent>
 		
 		<ItemActionComponent 
 			_tags="enabled_in_world"
-			action_id="MOLES_SOULS_GOLD_TO_SOULS" >
+			action_id="MOLES_SOULS_SUMMON_SOUL" >
 		</ItemActionComponent>
 	</Base>
 
@@ -16,7 +16,7 @@
 	</InheritTransformComponent>
 
     <LuaComponent
-		script_source_file="mods/moles_souls/files/scripts/projectiles/gold_to_souls.lua"
+		script_source_file="mods/moles_souls/files/scripts/projectiles/summon_soul.lua"
 		execute_every_n_frame="1"
 		remove_after_executed="1"
 		>

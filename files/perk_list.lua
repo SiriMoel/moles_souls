@@ -11,8 +11,8 @@ local to_insert = {
 		func = function( entity_perk_item, entity_who_picked, item_name )
 			add_halo_level(entity_who_picked, 1)
 		end,
-	},
-	{
+	},]]--
+	--[[{
 		id = "MOLES_SOULS_SOUL_SCALING",
 		ui_name = "$perk_moles_souls_soul_scaling",
 		ui_description = "$perkdesc_moles_souls_soul_scaling",

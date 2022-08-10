@@ -2,7 +2,7 @@ local to_insert = {
     {
 		id          = "MOLES_SOULS_REAPING_SHOT",
 		name 		= "Reaping Shot",
-		description = "Marks enemies to drop their souls on death.",
+		description = "Causes enemies to drop their souls on death.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/reaping_shot.png",
 		related_extra_entities = { "mods/moles_souls/files/entities/misc/reaping_shot.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
@@ -55,7 +55,7 @@ local to_insert = {
 	{
 		id          = "MOLES_SOULS_REAPING_FIELD",
 		name 		= "Circle of Reaping",
-		description = "Marks enemies in a large field to drop their souls on death.",
+		description = "Causes enemies in a large field to drop their souls on death.",
 		sprite 		= "mods/moles_souls/files/ui_gfx/actions/reaping_field.png",
 		related_projectiles	= {"mods/moles_souls/files/entities/projectiles/reaping_field.xml"},
 		type 		= ACTION_TYPE_STATIC_PROJECTILE,
@@ -292,6 +292,40 @@ local to_insert = {
 		custom_xml_file = "mods/moles_souls/files/entities/misc/summon_soul.xml",
 		action 		= function()
 			--dofile("mods/moles_souls/files/scripts/projectiles/summon_soul.lua")
+		end,
+	},
+	{
+		id          = "MOLES_SOULS_RANDOM_SOUL",
+		name 		= "Random Soul",
+		description = "Causes enemies to drop a random soul on death.",
+		sprite 		= "mods/moles_souls/files/ui_gfx/actions/random_soul.png",
+		related_extra_entities = { "mods/moles_souls/files/entities/misc/random_soul.xml" },
+		type 		= ACTION_TYPE_MODIFIER,
+		spawn_level                       = "1,2,3,4,5",
+		spawn_probability                 = "1,1,1,1,1",
+		price = 150,
+		mana = 40,
+		action 		= function()
+			c.extra_entities = c.extra_entities .. "mods/moles_souls/files/entities/misc/random_soul.xml,"
+			c.fire_rate_wait    = c.fire_rate_wait + 10
+			draw_actions( 1, true )
+		end,
+	},
+	{
+		id          = "MOLES_SOULS_DREAD_REAP",
+		name 		= "Dread Reap",
+		description = "Causes enemies to drop a dread soul on death.",
+		sprite 		= "mods/moles_souls/files/ui_gfx/actions/dread_reap.png",
+		related_extra_entities = { "mods/moles_souls/files/entities/misc/dread_reap.xml" },
+		type 		= ACTION_TYPE_MODIFIER,
+		spawn_level                       = "",
+		spawn_probability                 = "",
+		price = 150,
+		mana = 40,
+		action 		= function()
+			c.extra_entities = c.extra_entities .. "mods/moles_souls/files/entities/misc/dread_reap.xml,"
+			c.fire_rate_wait    = c.fire_rate_wait + 10
+			draw_actions( 1, true )
 		end,
 	},
 }
