@@ -5,7 +5,22 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
     local herd_id_number = ComponentGetValue2( EntityGetFirstComponent( entity_id, "GenomeDataComponent" ), "herd_id")
     local herd_id = HerdIdToString(herd_id_number)
 
-    local soul_reaped = soulTypes[math.random( 1, #soulTypes )]
+    local types = {
+        "bat",
+        "fly",
+        "friendly",
+        "gilded",
+        "mage",
+        "orcs",
+        "slimes",
+        "spider",
+        "synthetic",
+        "zombie",
+        "worm",
+        "fungi",
+    }
+
+    local soul_reaped = random_from_array( types )
 
     if ModSettingGet( "moles_souls.say_soul" ) == true then
         

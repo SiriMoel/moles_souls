@@ -29,7 +29,7 @@ if soul == nil then
     EntityKill(entity_id)
 end
 
-if ModSettingGet( "moles_souls.show_souls" ) then
+if ModSettingGet( "moles_souls.say_consumed_soul" ) then
 	GamePrint( "You have consumed a " .. soul  " soul." )
 end
 

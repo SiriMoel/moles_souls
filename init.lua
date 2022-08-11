@@ -34,7 +34,7 @@ end
 function OnPlayerSpawned( player_entity )
 	local souls = dofile_once("mods/moles_souls/files/scripts/souls.lua")
 	if GameHasFlagRun("moles_souls_has_init") then return end
-	dofile_once("mods/moles_souls/files/gui.lua")
+	--dofile_once("mods/moles_souls/files/gui.lua")
 	souls:init()
 	GameAddFlagRun("moles_souls_has_init")
 end
