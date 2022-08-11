@@ -4,7 +4,7 @@ local entity_id = GetUpdatedEntityID()
 local root_id = EntityGetRootEntity( entity_id )
 local x, y = EntityGetTransform( entity_id )
 
-local effect_id = EntityLoad("mods/moles_souls/files/entities/particles/reaping_particles_dread.xml", x, y)
+local effect_id = EntityLoad("mods/moles_souls/files/entities/particles/reaping_particles_living.xml", x, y)
 EntityAddChild( root_id, effect_id )
 
 edit_component( effect_id, "ParticleEmitterComponent", function(comp3,vars)

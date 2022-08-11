@@ -1,11 +1,17 @@
+SHOW LIVING AND GILDED SOULS SEPARATE IN UI
+
 --- the quest --- 
-called soul bounty
+called soul bounty ? (name doesnt rly matter tho)
 
-grandmaster's apprentice has found a way to use dread souls 
-(name tbd, basically a different kind of soul with more "chaotic" effects)
+UNCOVERING AN EXPERIMENT BY THE GRANDMASTER TO ACQUIRE IMMORTALITY
+wandmaster drops more stones now (total 3?)
+all turn liquids to con mana (BUT THEIR OWN SPECIAL CON MANA WHICH DOESNT MIX WITH NORMAL CON MANA)
+if u mix all liquids together u get living reap and book
+now use that to go get a living soul from a PW boss (as said in book but cryptically)
+casting soul blast or soul slash with that soul gives the next clue
+"make the hundred become one" when u have 100 living souls and cast soul lantern the next thing appears
+^ world shakes and the location of the phylactery is revealed, time to go hunt and kill it
+you hunt and kill it 
+you win
 
-u get a spell which lets u reap dread souls
-if u bring a specific dread soul to a thing (most dread souls will probably be the 1 type tho idk)
-u go to next part of quest ?
-
-end boss can only be damaged by dread-soul powered spells (not sure how i can make that but thats ok)
+ur getting alchemists notes throughout this n things ofc

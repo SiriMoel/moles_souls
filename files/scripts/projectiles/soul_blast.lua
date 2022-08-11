@@ -7,7 +7,6 @@ local root_id = EntityGetRootEntity( entity_id )
 local x, y = EntityGetTransform( entity_id )
 
 local soul = souls:get(1)
---local soul = EntityGetInRadiusWithTag( x, y, radius, "soul")[1]
 
 local comp = EntityGetFirstComponent( entity_id, "ProjectileComponent" )
 local projdamage = ComponentGetValue2( comp, "damage" )
@@ -30,9 +29,25 @@ if soul == nil then
     EntityKill(entity_id)
 end
 
-GamePrint(soul)
+if ModSettingGet( "moles_souls.show_souls" ) then
+	GamePrint( "You have consumed a " .. soul  " soul." )
+end
 
 local particlecomp = EntityGetFirstComponent(entity_id, "ParticleEmitterComponent")
+
+if soul == "living_quest" then 
+	GamePrint("QUEST - WIP")
+
+	local projcomp = EntityGetFirstComponent( entity_id, "ProjectileComponent" )
+
+	ComponentSetValue2( projcomp, "on_death_explode", false )
+	ComponentSetValue2( projcomp, "on_lifetime_out_explode", false )
+	ComponentSetValue2( projcomp, "collide_with_entities", false )
+	ComponentSetValue2( projcomp, "collide_with_world", false )
+	ComponentSetValue2( projcomp, "lifetime", 1 )
+
+    EntityKill(entity_id)
+end
 
 --ORCS
 if soul == "orcs" or soul == "zombie" then

@@ -312,19 +312,35 @@ local to_insert = {
 		end,
 	},
 	{
-		id          = "MOLES_SOULS_DREAD_REAP",
-		name 		= "Dread Reap",
-		description = "Causes enemies to drop a dread soul on death.",
-		sprite 		= "mods/moles_souls/files/ui_gfx/actions/dread_reap.png",
-		related_extra_entities = { "mods/moles_souls/files/entities/misc/dread_reap.xml" },
+		id          = "MOLES_SOULS_LIVING_REAP",
+		name 		= "Living Reap",
+		description = "Causes enemies to drop a living soul on death.",
+		sprite 		= "mods/moles_souls/files/ui_gfx/actions/living_reap.png",
+		related_extra_entities = { "mods/moles_souls/files/entities/misc/living_reap.xml" },
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "",
 		spawn_probability                 = "",
 		price = 150,
 		mana = 40,
 		action 		= function()
-			c.extra_entities = c.extra_entities .. "mods/moles_souls/files/entities/misc/dread_reap.xml,"
+			c.extra_entities = c.extra_entities .. "mods/moles_souls/files/entities/misc/living_reap.xml,"
 			c.fire_rate_wait    = c.fire_rate_wait + 10
+			draw_actions( 1, true )
+		end,
+	},
+	{
+		id          = "MOLES_SOULS_SOUL_SPEED",
+		name 		= "Soul Speed",
+		description = "Increases the power and speed of your spells at the cost of a soul.",
+		sprite 		= "mods/moles_souls/files/ui_gfx/actions/soul_speed.png",
+		related_extra_entities = { "mods/moles_souls/files/entities/misc/soul_speed.xml" },
+		type 		= ACTION_TYPE_MODIFIER,
+		spawn_level                       = "1,2,3,4,5",
+		spawn_probability                 = "1,1,1,1,1",
+		price = 120,
+		mana = 15,
+		action 		= function()
+			c.extra_entities = c.extra_entities .. "mods/moles_souls/files/entities/misc/soul_speed.xml,"
 			draw_actions( 1, true )
 		end,
 	},
@@ -332,4 +348,5 @@ local to_insert = {
 
 for k, v in ipairs(to_insert) do
     table.insert(actions, v)
+	--Print("moles_souls - There are " .. #to_insert .. " spells.")
 end

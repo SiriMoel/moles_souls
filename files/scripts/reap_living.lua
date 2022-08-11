@@ -5,26 +5,20 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
     local herd_id_number = ComponentGetValue2( EntityGetFirstComponent( entity_id, "GenomeDataComponent" ), "herd_id")
     local herd_id = HerdIdToString(herd_id_number)
 
-    local soultoadd = "dread"
+    local soultoadd = "living"
 
-    --[[ -- quest stup wip
-    if EntityGetName(entity_id) == "$animal_gazer_big" then
+    -- quest stup wip
+    if EntityGetName(entity_id) == "$animal_gazer_big" or EntityGetName(entity_id) == "$animal_parallel_alchemist" then
         if ModSettingGet( "moles_souls.say_soul" ) == true then
             GamePrint( "QUEST - WIP")
-            soultoadd = ""
         end
+        soultoadd = "living_quest"
     else
         if ModSettingGet( "moles_souls.say_soul" ) == true then
-            GamePrint( "You have acquired a dread soul!")
+            GamePrint( "You have acquired a living soul!")
         end
+        soultoadd = "living"
     end
 
-    end
-    ]]--
-
-    if ModSettingGet( "moles_souls.say_soul" ) == true then
-        GamePrint( "You have acquired a dread soul!")
-    end
-
-    souls:add("dread")
+    souls:add(soultoadd)
 end

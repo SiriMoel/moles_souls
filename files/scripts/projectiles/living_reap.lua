@@ -15,11 +15,11 @@ if ( #targets > 0 ) then
 
             EntityAddComponent( target_id, "LuaComponent", 
             {
-                script_death = "mods/moles_souls/files/scripts/reap_dread.lua",
+                script_death = "mods/moles_souls/files/scripts/reap_living.lua",
                 execute_every_n_frame = "-1",
             } )
 
-            local effect_id = EntityLoad("mods/moles_souls/files/entities/particles/marked_particles_dread.xml", x, y)
+            local effect_id = EntityLoad("mods/moles_souls/files/entities/particles/marked_particles_living.xml", x, y)
             EntityAddChild( target_id, effect_id )
 
             EntityAddTag( target_id, "reap_marked")

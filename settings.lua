@@ -33,6 +33,13 @@ local settings = {
         value_default = true,
         scope = MOD_SETTING_SCOPE_RUNTIME,
 	},
+	{
+		id = "say_consumed_soul",
+        label = "Say consumed soul",
+        description = "If you want to be told what souls you consume when using adaptive spells.",
+        value_default = true,
+        scope = MOD_SETTING_SCOPE_RUNTIME,
+	},
 }
 
 function ModSettingsGuiCount()

@@ -1,12 +1,8 @@
 <Entity>
 	<InheritTransformComponent />
-
-		<!--<SpriteParticleEmitterComponent
-			sprite_file="mods/moles_souls/files/particles/soul.xml" >
-		</SpriteParticleEmitterComponent>-->
 	
   <ParticleEmitterComponent 
-		emitted_material_name="dread_particles"
+		emitted_material_name="living_particles"
 		offset.x="0"
 		offset.y="0"
 		x_pos_offset_min="-4"
@@ -20,7 +16,7 @@
 		y_vel_max="2"
 		count_min="1"
 		count_max="3"
-		is_trail="0"
+		is_trail="1"
 		fade_based_on_lifetime="1"
 		lifetime_min="0.8"
 		lifetime_max="2.0"
@@ -34,11 +30,9 @@
 		emission_interval_max_frames="2"
 		is_emitting="1" >
 	</ParticleEmitterComponent>
-
-	
 	
 	<LifetimeComponent
-		lifetime="-1"
+		lifetime="500"
 		>
 	</LifetimeComponent>
 </Entity>

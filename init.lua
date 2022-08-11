@@ -14,6 +14,15 @@ if translations ~= nil then
 	ModTextFileSetContent( "data/translations/common.csv", translations );
 end
 
+local xml = nxml.parse(ModTextFileGetContent("data/entities/animals/boss_wizard/boss_wizard.xml"))
+xml:add_child(nxml.parse([[
+	<LuaComponent
+		script_death="mods/mould_n/files/scripts/animals/boss_wizard_death.lua"
+		>
+	</LuaComponent>
+]]))
+ModTextFileSetContent("data/entities/animals/boss_wizard/boss_wizard.xml", tostring(xml))
+
 function OnModInit()
 
 end
@@ -25,6 +34,7 @@ end
 function OnPlayerSpawned( player_entity )
 	local souls = dofile_once("mods/moles_souls/files/scripts/souls.lua")
 	if GameHasFlagRun("moles_souls_has_init") then return end
+	dofile_once("mods/moles_souls/files/gui.lua")
 	souls:init()
 	GameAddFlagRun("moles_souls_has_init")
 end

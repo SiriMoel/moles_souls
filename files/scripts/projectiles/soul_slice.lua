@@ -20,6 +20,10 @@ local spritecomp = EntityGetFirstComponent( entity_id, "SpriteComponent")
 
 local baseslice = 1.3
 
+if ModSettingGet( "moles_souls.show_souls" ) then
+	GamePrint( "You have consumed a " .. soul  " soul." )
+end
+
 if soul == nil then
     GamePrint("You have no souls.")
 
@@ -40,6 +44,19 @@ if soul ~=nil then
       frame_length="1",
    } )
    ComponentObjectSetValue( comp, "damage_by_type", "slice", baseslice )
+end
+
+if soul == "living_quest" then 
+	GamePrint("QUEST - WIP")
+
+	local projcomp = EntityGetFirstComponent( entity_id, "ProjectileComponent" )
+
+	ComponentSetValue2( projcomp, "on_death_explode", false )
+	ComponentSetValue2( projcomp, "on_lifetime_out_explode", false )
+	ComponentSetValue2( projcomp, "collide_with_entities", false )
+	ComponentSetValue2( projcomp, "collide_with_world", false )
+
+    EntityKill(entity_id)
 end
 
 
