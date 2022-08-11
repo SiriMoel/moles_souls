@@ -1,4 +1,4 @@
-function moles_souls_souls_as_mana(recursion_level, iteration)
+extra_modifiers["MOLES_SOULS_SOULS_AS_MANA"] = function(recursion_level, iteration)
     draw_action_eem(true, true)
 end
 
