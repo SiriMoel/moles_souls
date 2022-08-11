@@ -19,7 +19,7 @@ if ( #targets > 0 ) then
                 execute_every_n_frame = "-1",
             } )
 
-            local effect_id = EntityLoad("mods/moles_souls/files/entities/particles/marked_particles.xml", x, y)
+            local effect_id = EntityLoad("mods/moles_souls/files/entities/particles/marked_particles_random.xml", x, y)
             EntityAddChild( target_id, effect_id )
 
             EntityAddTag( target_id, "reap_marked")

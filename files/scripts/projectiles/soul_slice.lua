@@ -21,7 +21,7 @@ local spritecomp = EntityGetFirstComponent( entity_id, "SpriteComponent")
 local baseslice = 1.3
 
 if ModSettingGet( "moles_souls.say_consumed_soul" ) then
-	GamePrint( "You have consumed a " .. soul  " soul." )
+	GamePrint( "You have consumed a " .. soul .. " soul." )
 end
 
 if soul == nil then

@@ -9,7 +9,6 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
         "bat",
         "fly",
         "friendly",
-        "gilded",
         "mage",
         "orcs",
         "slimes",
@@ -21,6 +20,12 @@ function death( damage_type_bit_field, damage_message, entity_thats_responsible,
     }
 
     local soul_reaped = random_from_array( types )
+
+    local dogilded = math.random(1,100)
+
+    if dogilded == 1 then
+        soul_reaped = "gilded"
+    end
 
     if ModSettingGet( "moles_souls.say_soul" ) == true then
         

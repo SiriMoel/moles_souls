@@ -30,7 +30,7 @@ if soul == nil then
 end
 
 if ModSettingGet( "moles_souls.say_consumed_soul" ) then
-	GamePrint( "You have consumed a " .. soul  " soul." )
+	GamePrint( "You have consumed a " .. soul .. " soul." )
 end
 
 local particlecomp = EntityGetFirstComponent(entity_id, "ParticleEmitterComponent")

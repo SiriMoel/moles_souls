@@ -303,11 +303,11 @@ local to_insert = {
 		type 		= ACTION_TYPE_MODIFIER,
 		spawn_level                       = "1,2,3,4,5",
 		spawn_probability                 = "1,1,1,1,1",
-		price = 150,
+		price = 200,
 		mana = 40,
 		action 		= function()
 			c.extra_entities = c.extra_entities .. "mods/moles_souls/files/entities/misc/random_soul.xml,"
-			c.fire_rate_wait    = c.fire_rate_wait + 10
+			c.fire_rate_wait    = c.fire_rate_wait + 15
 			draw_actions( 1, true )
 		end,
 	},
@@ -321,7 +321,7 @@ local to_insert = {
 		spawn_level                       = "",
 		spawn_probability                 = "",
 		price = 150,
-		mana = 40,
+		mana = 30,
 		action 		= function()
 			c.extra_entities = c.extra_entities .. "mods/moles_souls/files/entities/misc/living_reap.xml,"
 			c.fire_rate_wait    = c.fire_rate_wait + 10

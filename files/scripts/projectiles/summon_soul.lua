@@ -49,6 +49,10 @@ local r = f(soul)
 
 if r ~= nil then
     EntityLoad(r["path"], x, y)
+    if ModSettingGet( "moles_souls.say_consumed_soul" ) then
+        GamePrint( "You have consumed a " .. soul ..  " soul." )
+    end
+    
     souls:remove(soul)
 else
     GamePrint("Issue.")
