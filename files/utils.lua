@@ -4,7 +4,23 @@ dofile_once("data/scripts/lib/utilities.lua")
 local entity_id = GetUpdatedEntityID()
 local root_id = EntityGetRootEntity( entity_id )
 local x, y = EntityGetTransform( entity_id )
+local soulTypes = {
+    "bat",
+    "fly",
+    "friendly",
+    "gilded",
+    "mage",
+    "orcs",
+    "slimes",
+    "spider",
+    "synthetic",
+    "zombie",
+    "worm",
+    "fungi",
+    "living",
+    "living_quest"
+}
 
 local radius = 160 --radius for soul consumption
 
-return x, y, radius, root_id, entity_id
+return x, y, radius, root_id, entity_id, soulTypes
