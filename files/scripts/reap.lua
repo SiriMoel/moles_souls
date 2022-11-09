@@ -13,8 +13,6 @@ local soulTypes = {
     "zombie",
     "worm",
     "fungi",
-    "living",
-    "living_quest"
 }
 function death( damage_type_bit_field, damage_message, entity_thats_responsible, drop_items )
     local entity_id = GetUpdatedEntityID()

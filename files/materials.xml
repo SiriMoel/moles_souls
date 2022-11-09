@@ -15,19 +15,6 @@
 	<CellDataChild
       	_parent="spark"
       	_inherit_reactions="1"
-      	name="living_particles" 
-    	ui_name=""
-    	wang_color="7f82f803"
-    	>
-      	<Graphics
-    	color="7f82f803"
-    	fire_colors_index="1" >
-        </Graphics>
-    </CellDataChild>
-
-	<CellDataChild
-      	_parent="spark"
-      	_inherit_reactions="1"
       	name="soul_particles_green" 
     	ui_name=""
     	wang_color="7f94ffc7"

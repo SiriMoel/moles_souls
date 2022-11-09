@@ -312,23 +312,6 @@ local to_insert = {
 		end,
 	},
 	{
-		id          = "MOLES_SOULS_LIVING_REAP",
-		name 		= "Living Reap",
-		description = "Causes enemies to drop a living soul on death.",
-		sprite 		= "mods/moles_souls/files/ui_gfx/actions/living_reap.png",
-		related_extra_entities = { "mods/moles_souls/files/entities/misc/living_reap.xml" },
-		type 		= ACTION_TYPE_MODIFIER,
-		spawn_level                       = "",
-		spawn_probability                 = "",
-		price = 150,
-		mana = 30,
-		action 		= function()
-			c.extra_entities = c.extra_entities .. "mods/moles_souls/files/entities/misc/living_reap.xml,"
-			c.fire_rate_wait    = c.fire_rate_wait + 10
-			draw_actions( 1, true )
-		end,
-	},
-	{
 		id          = "MOLES_SOULS_SOUL_SPEED",
 		name 		= "Soul Speed",
 		description = "Increases the power and speed of your spells at the cost of a soul.",

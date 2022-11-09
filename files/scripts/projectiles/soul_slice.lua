@@ -46,20 +46,6 @@ if soul ~=nil then
    ComponentObjectSetValue( comp, "damage_by_type", "slice", baseslice )
 end
 
-if soul == "living_quest" then 
-	GamePrint("QUEST - WIP")
-
-	local projcomp = EntityGetFirstComponent( entity_id, "ProjectileComponent" )
-
-	ComponentSetValue2( projcomp, "on_death_explode", false )
-	ComponentSetValue2( projcomp, "on_lifetime_out_explode", false )
-	ComponentSetValue2( projcomp, "collide_with_entities", false )
-	ComponentSetValue2( projcomp, "collide_with_world", false )
-
-    EntityKill(entity_id)
-end
-
-
 if soul == "orcs" or soul == "zombie" then  
    ComponentSetValue2( spritecomp, "image_file", spritepath .. "orcs" .. ".xml" )
 end

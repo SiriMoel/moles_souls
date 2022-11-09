@@ -7,4 +7,4 @@ gui = gui or GuiCreate()
 GuiStartFrame(gui)
 
 GuiText(gui, 10, 10, "Souls: " .. soul_count) --coords random idk, will be an image instead of "Souls: "
---needs to be split up into normal, gilded, living
+--needs to be split up into normal, gilded

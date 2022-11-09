@@ -35,20 +35,6 @@ end
 
 local particlecomp = EntityGetFirstComponent(entity_id, "ParticleEmitterComponent")
 
-if soul == "living_quest" then 
-	GamePrint("QUEST - WIP")
-
-	local projcomp = EntityGetFirstComponent( entity_id, "ProjectileComponent" )
-
-	ComponentSetValue2( projcomp, "on_death_explode", false )
-	ComponentSetValue2( projcomp, "on_lifetime_out_explode", false )
-	ComponentSetValue2( projcomp, "collide_with_entities", false )
-	ComponentSetValue2( projcomp, "collide_with_world", false )
-	ComponentSetValue2( projcomp, "lifetime", 1 )
-
-    EntityKill(entity_id)
-end
-
 --ORCS
 if soul == "orcs" or soul == "zombie" then
 --if EntityHasTag( soul, "soul_orcs" ) or EntityHasTag( soul, "soul_zombie" ) then

@@ -17,8 +17,6 @@ local soulTypes = {
     "zombie",
     "worm",
     "fungi",
-    "living",
-    "living_quest"
 }
 
 local radius = 160 --radius for soul consumption
